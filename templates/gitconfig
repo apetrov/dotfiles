@@ -1,0 +1,33 @@
+[user]
+	name = Alexander Petrov
+	email = alexonrails@gmail.com
+[github]
+	user = apetrov
+[core]
+	editor = vim
+	excludesfile = /Users/apetrov/.gitignore_global
+[color]
+	ui = true
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  aa= add --all
+  dc= diff --cached
+  cob = checkout -b
+  up = !git fetch origin && git rebase origin/master
+  ir = !git rebase -i origin/master
+  done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && rake && git pushlg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  hist = log --pretty="tformat:\"%h %ad | %s%d [%an]\"" --date=short --decorate
+  who = shortlog -n -s --no-merges
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
