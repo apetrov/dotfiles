@@ -1,54 +1,69 @@
 #login shell
 # /usr/local/Cellar/zsh/5.0.2/bin/zsh-5.0.2 -i
 # don't use anything below this version!
+
+
+bindkey -v # VIM binding for zsh
+
+#zshell
 ZSH=$HOME/.oh-my-zsh
-
 ZSH_THEME="robbyrussell"
-
 plugins=(git osx rails ruby github brew rails3 heroku coffee)
-
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Library/PostgreSQL/9.2/bin:/Users/apetrov/node_modules/coffee-script/bin
+export SBT_OPTS="-Xmx2048M -XX:MaxPermSize=256M" #Scala build too
+export EDITOR='vim'
 
+#SSH certificates
+ssh-add ~/.ssh/id_rsa >/dev/null  2>&1
+ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
 
+#RVM
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-export VIROOL_ENV=apetrov
+
+#Redefine standard tools
 alias git=hub
-alias json='python -m json.tool'
-alias ss='python -m SimpleHTTPServer'
-alias hh='pbpaste | html2haml | pbcopy'
-alias sync-virool="/Users/apetrov/.rvm/rubies/ruby-1.9.3-p327/bin/ruby /usr/local/bin/database-ci.rb  `cat ~/.awssecret | head -1` `cat ~/.awssecret | tail -1` virool-backup virool_production virool_development"
-alias quevita-deploy="ey deploy --environment='community_production' --app='community' --ref=master --migrate"
 alias ctags="`brew --prefix`/bin/ctags"
-alias -g be='bundle exec'
-alias -g jsonformat='python -m json.tool'
-alias -g xmlformat="xmllint -format"
-alias -s log="tail -f"
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias pg_dump="/Library/PostgreSQL/9.2/bin/pg_dump"
 alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim --startuptime vim.log" # Track slow vim scripts env
-alias uibug="sudo killall -HUP WindowServer"
+alias pg_dump="/Library/PostgreSQL/9.2/bin/pg_dump"
+
+#Projects
+export VIROOL_ENV=apetrov
+alias sync-virool="/Users/apetrov/.rvm/rubies/ruby-1.9.3-p327/bin/ruby /usr/local/bin/database-ci.rb  `cat ~/.awssecret | head -1` `cat ~/.awssecret | tail -1` virool-backup virool_production virool_development"
+alias virool-deploy="rake assets:precompile && cap deploy:assets:update_manifest && cap deploy"
+alias quevita-deploy="ey deploy --environment='community_production' --app='community' --ref=master --migrate"
+
+#Servers
 alias remote_server="ssh ubuntu@ec2-23-20-58-37.compute-1.amazonaws.com -L 3000:localhost:3000"
 alias remote_dev="ssh ubuntu@ec2-23-20-58-37.compute-1.amazonaws.com -L 3000:localhost:3000"
-alias virool-deploy="rake assets:precompile && cap deploy:assets:update_manifest && cap deploy"
-bindkey -v # VIM binding for zsh
+
+# Ctrl-f to return to the foreground process
 export HISTIGNORE="fg*"
 bindkey -s '^f' '^qfg %\n' #C-f for return to the foreground process
+
+# Convinience tools
+alias hh='pbpaste | html2haml | pbcopy'
+alias ss='python -m SimpleHTTPServer'
+alias -g jsonformat='python -m json.tool'
+alias -g xmlformat="xmllint -format"
+alias -g be='bundle exec'
+alias -s log="tail -f"
+
+
 function pgservers(){
   cat ~/.pgpass | cut -d ':' -f 1 | ruby -ne 'puts "psql -U postgres -h #{$_}"'
 }
 
-ssh-add ~/.ssh/id_rsa >/dev/null  2>&1
-ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
-export SBT_OPTS="-Xmx2048M -XX:MaxPermSize=256M" #Scala build too
 __rvm_project_rvmrc  #https://rvm.io/integration/zsh/
 
+# troubleshooting
 
-#Internet connection down
-function internet_connection(){
+alias uibug="sudo killall -HUP WindowServer"
+
+function internet_connection(){ #Internet connection down
   while :
   do
     ping  -t 2 -o -c 1 8.8.8.8 || terminal-notifier -message "Internet is down" -title "Connection"

@@ -39,8 +39,9 @@ end
 task :purge do
   Dir["config/*"].each do |t|
     name = t.split('/').last
-    sh "rm ~/.#{name}"
+    sh "rm ~/.#{name}" rescue nil
   end
+  sh "rm -rf ~/.tmuxinator" rescue nil
 end
 
 task :link do
@@ -49,4 +50,5 @@ task :link do
     file = File.join(Dir.pwd,t)
     ln_s file, File.join(ENV['HOME'],".#{name}")
   end
+  sh  "ln -s #{File.join(Dir.pwd,"tmuxinator")} #{File.join(ENV['HOME'],".tmuxinator")}"
 end
