@@ -1,6 +1,6 @@
-# ~/.tmuxinator/virool.yml
+# ~/.tmuxinator/virool-pm.yml
 
-name: virool
+name: virool-pm
 root: ~/projects/virool
 
 # Optional tmux socket
@@ -20,6 +20,12 @@ windows:
       layout: main-vertical
       panes:
         - vim
-        -
+        - git st
   - server: bundle exec rails s
-  - logs: tail -f log/development.log
+  - console: bundle exec rails c
+  - log: tail -f log/development.log
+  - psql:
+    layout: main-vertical
+    panes:
+      - psql -U postgres -h db-2.virool.com analytics_production
+      - psql -U postgres -h db-3.virool.com virool_production

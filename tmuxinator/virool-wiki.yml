@@ -1,7 +1,7 @@
-# ~/.tmuxinator/virool-pm.yml
+# ~/.tmuxinator/virool-wiki.yml
 
-name: virool-pm
-root: ~/projects/virool
+name: virool-wiki
+root: ~/projects/virool-wiki
 
 # Optional tmux socket
 # socket_name: foo
@@ -16,9 +16,9 @@ root: ~/projects/virool
 # tmux_options: -f ~/.tmux.mac.conf
 
 windows:
-  - ghi:
+  - editor:
       layout: main-vertical
       panes:
-        - ghi list
-        - ghi milestone
-        - ghi show 1234
+        - vim
+        - gollum
+        - ls

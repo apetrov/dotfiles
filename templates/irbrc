@@ -1,0 +1,14 @@
+if RUBY_VERSION > '1.9'
+  class Object
+    def edit_method(method)
+      file, line = self.send(:method, method.to_sym).source_location
+      return if file.nil?
+
+      if editor = ENV['EDITOR']
+        system("#{editor} #{file} +#{line}")
+      else
+        puts 'No $EDITOR set'
+      end
+    end
+  end
+end
