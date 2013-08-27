@@ -50,7 +50,11 @@ alias -g jsonformat='python -m json.tool'
 alias -g xmlformat="xmllint -format"
 alias -g be='bundle exec'
 alias -s log="tail -f"
-
+alias -g db2="psql2 db-2 analytics_production"
+alias -g db3="psql2 db-3 virool_production"
+alias -g db3b="psql2 db-3 billing_production"
+alias -g db4="psql2 db-4 impressions_production"
+alias -g db5="psql2 db-5 legacy_production"
 
 function pgservers(){
   cat ~/.pgpass | cut -d ':' -f 1 | ruby -ne 'puts "psql -U postgres -h #{$_}"'
