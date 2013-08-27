@@ -56,6 +56,9 @@ function pgservers(){
   cat ~/.pgpass | cut -d ':' -f 1 | ruby -ne 'puts "psql -U postgres -h #{$_}"'
 }
 
+function psql2 {
+  psql -U `cat ~/.pgpass | grep $1 | cut -d: -f4` -h `cat ~/.pgpass | grep $1 | cut -d: -f1` $2
+}
 __rvm_project_rvmrc  #https://rvm.io/integration/zsh/
 
 # troubleshooting
