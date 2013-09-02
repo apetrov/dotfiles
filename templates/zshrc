@@ -32,7 +32,7 @@ alias pg_dump="/Library/PostgreSQL/9.2/bin/pg_dump"
 #Projects
 export VIROOL_ENV=apetrov
 alias sync-virool="/Users/apetrov/.rvm/rubies/ruby-1.9.3-p327/bin/ruby /usr/local/bin/database-ci.rb  `cat ~/.awssecret | head -1` `cat ~/.awssecret | tail -1` virool-backup virool_production virool_development"
-alias virool-deploy="rake assets:precompile && cap deploy:assets:update_manifest && cap deploy"
+alias virool-deploy="bundle exec rake assets:precompile && cap deploy:assets:update_manifest && cap deploy"
 alias quevita-deploy="ey deploy --environment='community_production' --app='community' --ref=master --migrate"
 
 #Servers
