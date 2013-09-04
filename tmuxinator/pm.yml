@@ -1,6 +1,6 @@
 # ~/.tmuxinator/virool-pm.yml
 
-name: virool-pm
+name: pm
 root: ~/projects/virool
 
 # Optional tmux socket

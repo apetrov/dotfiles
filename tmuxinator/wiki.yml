@@ -1,6 +1,5 @@
-# ~/.tmuxinator/virool-wiki.yml
 
-name: virool-wiki
+name: wiki
 root: ~/projects/virool-wiki
 
 # Optional tmux socket
