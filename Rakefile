@@ -1,7 +1,7 @@
 task :default => [:update, :compile, :purge, :link ]
 
 task :update do
-  sh 'git pull'
+  sh 'git pull' rescue nil
 end
 
 task :compile do
