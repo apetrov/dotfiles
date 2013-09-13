@@ -1,7 +1,13 @@
 #login shell
 # /usr/local/Cellar/zsh/5.0.2/bin/zsh-5.0.2 -i
 # don't use anything below this version!
-
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='osx'
+fi
 
 
 #zshell
@@ -22,12 +28,14 @@ ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-#Redefine standard tools
-alias git=hub
-alias ctags="`brew --prefix`/bin/ctags"
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim --startuptime vim.log" # Track slow vim scripts env
-alias pg_dump="/Library/PostgreSQL/9.2/bin/pg_dump"
+#Redefine standard tools on osx
+if [[ $platform == 'osx' ]]; then
+  alias git=hub
+  alias ctags="`brew --prefix`/bin/ctags"
+  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+  alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim --startuptime vim.log" # Track slow vim scripts env
+  alias pg_dump="/Library/PostgreSQL/9.2/bin/pg_dump"
+fi
 
 #Projects
 export VIROOL_ENV=apetrov
@@ -75,6 +83,12 @@ function internet_connection(){ #Internet connection down
     ping  -t 2 -o -c 1 8.8.8.8 || terminal-notifier -message "Internet is down" -title "Connection"
     sleep 5
   done
+}
+
+function git_prune(){
+  git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
+  git fetch -p
+  git gc
 }
 
 function dublicate_open_with(){
