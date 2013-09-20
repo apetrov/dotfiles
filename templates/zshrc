@@ -35,10 +35,10 @@ if [[ $platform == 'osx' ]]; then
   alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim --startuptime vim.log" # Track slow vim scripts env
   alias pg_dump="/Library/PostgreSQL/9.2/bin/pg_dump"
-  export VIROOL_ENV=apetrov
 fi
 
 #Projects
+export VIROOL_ENV=apetrov
 alias sync-virool="/Users/apetrov/.rvm/rubies/ruby-1.9.3-p327/bin/ruby /usr/local/bin/database-ci.rb  `cat ~/.awssecret | head -1` `cat ~/.awssecret | tail -1` virool-backup virool_production virool_development"
 alias virool-deploy="bundle exec rake assets:precompile && cap deploy:assets:update_manifest && cap deploy"
 alias quevita-deploy="ey deploy --environment='community_production' --app='community' --ref=master --migrate"
@@ -63,7 +63,12 @@ alias -g db3="psql2 db-3 virool_production"
 alias -g db3b="psql2 db-3 billing_production"
 alias -g db4="psql2 db-4 impressions_production"
 alias -g db5="psql2 db-5 legacy_production"
-
+function ghiu(){
+  ruby -e '["oruen","Magicdream","vladchi","dzhulk","kapkaev","trybeee", "apetrov"].each{|u| puts `ghi list -u #{u}` }'
+}
+function ghim(){
+  ruby -e '`ghi milestone | grep -v Backlog | grep due | cut -f1 -d: | tr -d " "`.split("\n").each{ |m| puts `ghi list -M #{m}`}'
+}
 function pgservers(){
   cat ~/.pgpass | cut -d ':' -f 1 | ruby -ne 'puts "psql -U postgres -h #{$_}"'
 }
