@@ -1,6 +1,16 @@
 ControlMaster auto
 ControlPath /tmp/ssh_mux_%h_%p_%r
 ControlPersist yes
+ServerAliveInterval 30
+ServerAliveCountMax 120
+CheckHostIP no
+Compression yes
+CompressionLevel 9
+ConnectTimeout 10
+KeepAlive yes
+TCPKeepAlive yes
+PermitLocalCommand yes
+PreferredAuthentications publickey
 
 Host *
   ForwardAgent yes
@@ -44,6 +54,16 @@ Host scala-3
 Host admin
   User deploy
   HostName admin.virool.com
+
+Host app-1
+  User deploy
+  HostName app-1.virool.com
+  LocalCommand cd /var/rails/virool.com/current
+
+Host app-2
+  User deploy
+  HostName app-2.virool.com
+  LocalCommand cd /var/rails/virool.com/current
 
 Host dev
   HostName ec2-50-16-146-231.compute-1.amazonaws.com
