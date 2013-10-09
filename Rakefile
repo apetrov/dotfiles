@@ -42,6 +42,7 @@ task :purge do
     sh "rm ~/.#{name}" rescue nil
   end
   sh "rm -rf ~/.tmuxinator" rescue nil
+  sh 'rm ~/.ssh/config' rescue nil
 end
 
 task :link do
@@ -51,5 +52,5 @@ task :link do
     ln_s file, File.join(ENV['HOME'],".#{name}")
   end
   sh  "ln -s #{File.join(Dir.pwd,"tmuxinator")} #{File.join(ENV['HOME'],".tmuxinator")}"
-  sh  "ln -s #{File.join(Dir.pwd,"ssh-config")} #{File.join(ENV['HOME'],".ssh/config")}"
+  sh  "ln -s #{File.join(Dir.pwd,"config/ssh-config")} #{File.join(ENV['HOME'],".ssh/config")}"
 end
