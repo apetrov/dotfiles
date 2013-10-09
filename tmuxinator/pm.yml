@@ -19,6 +19,6 @@ windows:
   - ghi:
       layout: main-vertical
       panes:
-        - ghi list
-        - ghi milestone
+        - ghiu
+        - ghim
         - ghi show 1234

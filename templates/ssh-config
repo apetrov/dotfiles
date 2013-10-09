@@ -1,0 +1,51 @@
+ControlMaster auto
+ControlPath /tmp/ssh_mux_%h_%p_%r
+ControlPersist yes
+
+Host *
+  ForwardAgent yes
+
+Host db-2
+  User deploy
+  HostName db-2.virool.com
+
+Host db-3
+  User deploy
+  HostName db-3.virool.com
+
+Host db-4
+  User deploy
+  HostName db-4.virool.com
+
+Host db-5
+  User deploy
+  HostName db-5.virool.com
+
+Host db-6
+  User deploy
+  HostName db-6.virool.com
+
+Host api-1
+  User deploy
+  HostName api-1.virool.com
+
+Host scala-1
+  User deploy
+  HostName scala-1.virool.com
+
+Host scala-2
+  User deploy
+  HostName scala-2.virool.com
+
+Host scala-3
+  User deploy
+  HostName scala-3.virool.com
+
+Host admin
+  User deploy
+  HostName admin.virool.com
+
+Host dev
+  HostName ec2-50-16-146-231.compute-1.amazonaws.com
+  LocalForward 3000 127.0.0.1:3000
+  User ubuntu

@@ -51,4 +51,5 @@ task :link do
     ln_s file, File.join(ENV['HOME'],".#{name}")
   end
   sh  "ln -s #{File.join(Dir.pwd,"tmuxinator")} #{File.join(ENV['HOME'],".tmuxinator")}"
+  sh  "ln -s #{File.join(Dir.pwd,"ssh-config")} #{File.join(ENV['HOME'],".ssh/config")}"
 end
