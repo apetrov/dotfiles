@@ -16,13 +16,10 @@ root: ~/projects/virool
 
 windows:
   - editor:
-      layout: main-vertical
+      layout: main-horizontal
       panes:
         - vim
         - git st
-  - server: bundle exec rails s
-  - console: bundle exec rails c
-  - log: tail -f log/development.log
   - psql:
     layout: main-vertical
     panes:

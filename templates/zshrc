@@ -20,6 +20,9 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bi
 export SBT_OPTS="-Xmx2048M -XX:MaxPermSize=256M" #Scala build too
 export EDITOR='vim'
 
+export RUBY_HEAP_MIN_SLOTS=600000
+export RUBY_GC_MALLOC_LIMIT=59000000
+export RUBY_HEAP_FREE_MIN=100000
 #SSH certificates
 ssh-add ~/.ssh/id_rsa >/dev/null  2>&1
 ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
