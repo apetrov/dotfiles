@@ -16,12 +16,7 @@ root: ~/projects/virool
 
 windows:
   - editor:
-      layout: main-horizontal
+      layout: ab7a,178x55,0,0[178x52,0,0,1,178x2,0,53,0]
       panes:
         - vim
         - git st
-  - psql:
-    layout: main-vertical
-    panes:
-      - psql -U postgres -h db-2.virool.com analytics_production
-      - psql -U postgres -h db-3.virool.com virool_production
