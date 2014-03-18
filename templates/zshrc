@@ -16,7 +16,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git osx rails ruby github brew heroku coffee)
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Library/PostgreSQL/9.2/bin:/Users/apetrov/node_modules/coffee-script/bin
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Library/PostgreSQL/9.3/bin:/Users/apetrov/node_modules/coffee-script/bin
 export SBT_OPTS="-Xmx2048M -XX:MaxPermSize=256M" #Scala build too
 export EDITOR='vim'
 
@@ -37,7 +37,7 @@ if [[ $platform == 'osx' ]]; then
   alias ctags="`brew --prefix`/bin/ctags"
   alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
   alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim --startuptime vim.log" # Track slow vim scripts env
-  alias pg_dump="/Library/PostgreSQL/9.2/bin/pg_dump"
+  alias pg_dump="/Library/PostgreSQL/9.3/bin/pg_dump"
 fi
 
 #Projects
@@ -66,6 +66,7 @@ alias -g db3="psql2 db-3 virool_production"
 alias -g db3b="psql2 db-3 billing_production"
 alias -g db4="psql2 db-4 impressions_production"
 alias -g db5="psql2 db-5 legacy_production"
+alias -g recreate-db="dropdb -U postgres -h localhost virool_development;pg_dump -U postgres -h db02.virool -T versions virool_production | psql -U postgres -h localhost virool_development"
 function ghiu(){
   ruby -e '["oruen","Magicdream","vladchi","dzhulk","kapkaev","trybeee", "apetrov"].each{|u| puts `ghi list -u #{u}` }'
 }
