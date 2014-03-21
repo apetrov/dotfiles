@@ -61,12 +61,27 @@ alias -g jsonformat='python -m json.tool'
 alias -g xmlformat="xmllint -format"
 alias -g be='bundle exec'
 alias -s log="tail -f"
-alias -g db2="psql2 db-2 analytics_production"
-alias -g db3="psql2 db-3 virool_production"
-alias -g db3b="psql2 db-3 billing_production"
-alias -g db4="psql2 db-4 impressions_production"
-alias -g db5="psql2 db-5 legacy_production"
-alias -g recreate-db="dropdb -U postgres -h localhost virool_development;pg_dump -U postgres -h db02.virool -T versions virool_production | psql -U postgres -h localhost virool_development"
+
+function db-p(){
+  psql2 db02 virool_production
+}
+
+function db-a(){
+  psql2 db05 virool_production
+}
+
+function db-c(){
+  psql2 db07 campaign_analytics_production
+}
+
+function db-b(){
+  psql2 db02 billing_production
+}
+
+function db-l(){
+  psql2 db04 legacy_production
+}
+
 function ghiu(){
   ruby -e '["oruen","Magicdream","vladchi","dzhulk","kapkaev","trybeee", "apetrov"].each{|u| puts `ghi list -u #{u}` }'
 }
