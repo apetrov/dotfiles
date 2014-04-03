@@ -67,7 +67,7 @@ function db-p(){
 }
 
 function db-a(){
-  psql2 db05 virool_production
+  psql2 db05 virool_analytics
 }
 
 function db-c(){
@@ -113,6 +113,10 @@ function git_prune(){
   git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
   git fetch -p
   git gc
+}
+
+function whiteboard(){
+  convert $1 -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 $2
 }
 
 function dublicate_open_with(){
