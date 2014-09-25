@@ -41,10 +41,17 @@ if [[ $platform == 'osx' ]]; then
 fi
 
 #Projects
-export VIROOL_ENV=apetrov
 alias sync-virool="/Users/apetrov/.rvm/rubies/ruby-1.9.3-p327/bin/ruby /usr/local/bin/database-ci.rb  `cat ~/.awssecret | head -1` `cat ~/.awssecret | tail -1` virool-backup virool_production virool_development"
 alias virool-deploy="bundle exec rake assets:precompile && be cap deploy:assets:update_manifest && be cap deploy"
 alias quevita-deploy="ey deploy --environment='community_production' --app='community' --ref=master --migrate"
+
+function remote-db(){
+  rm -f config/database.yml;ln -s $(pwd)/config/database.remote.yml config/database.yml
+}
+
+function local-db(){
+  rm -f config/database.yml;ln -s $(pwd)/config/database.local.yml config/database.yml
+}
 
 #Servers
 alias remote_server="ssh ubuntu@ec2-23-20-58-37.compute-1.amazonaws.com -L 3000:localhost:3000"
