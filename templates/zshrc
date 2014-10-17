@@ -9,6 +9,8 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='osx'
 fi
 
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 #zshell
 ZSH=$HOME/.oh-my-zsh
@@ -20,9 +22,6 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bi
 export SBT_OPTS="-Xmx2048M -XX:MaxPermSize=256M" #Scala build too
 export EDITOR='vim'
 
-export RUBY_HEAP_MIN_SLOTS=600000
-export RUBY_GC_MALLOC_LIMIT=59000000
-export RUBY_HEAP_FREE_MIN=100000
 #SSH certificates
 ssh-add ~/.ssh/id_rsa >/dev/null  2>&1
 ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
@@ -40,10 +39,7 @@ if [[ $platform == 'osx' ]]; then
   alias pg_dump="/Library/PostgreSQL/9.3/bin/pg_dump"
 fi
 
-#Projects
-alias sync-virool="/Users/apetrov/.rvm/rubies/ruby-1.9.3-p327/bin/ruby /usr/local/bin/database-ci.rb  `cat ~/.awssecret | head -1` `cat ~/.awssecret | tail -1` virool-backup virool_production virool_development"
 alias virool-deploy="bundle exec rake assets:precompile && be cap deploy:assets:update_manifest && be cap deploy"
-alias quevita-deploy="ey deploy --environment='community_production' --app='community' --ref=master --migrate"
 
 function remote-db(){
   rm -f config/database.yml;ln -s $(pwd)/config/database.remote.yml config/database.yml
@@ -53,13 +49,10 @@ function local-db(){
   rm -f config/database.yml;ln -s $(pwd)/config/database.local.yml config/database.yml
 }
 
-#Servers
-alias remote_server="ssh ubuntu@ec2-23-20-58-37.compute-1.amazonaws.com -L 3000:localhost:3000"
-alias remote_dev="ssh ubuntu@ec2-23-20-58-37.compute-1.amazonaws.com -L 3000:localhost:3000"
-
-# Ctrl-f to return to the foreground process
-export HISTIGNORE="fg*"
-bindkey -s '^f' '^qfg %\n' #C-f for return to the foreground process
+function share(){
+  curl --upload-file ./$1 https://transfer.sh/$1 | pbcopy;
+  echo `pbpaste`;
+}
 
 # Convinience tools
 alias hh='pbpaste | html2haml | pbcopy'
@@ -69,53 +62,12 @@ alias -g xmlformat="xmllint -format"
 alias -g be='bundle exec'
 alias -s log="tail -f"
 
-function db-p(){
-  psql2 db02 virool_production
-}
-
-function db-a(){
-  psql2 db05 virool_analytics
-}
-
-function db-c(){
-  psql2 db07 campaign_analytics_production
-}
-
-function db-b(){
-  psql2 db02 billing_production
-}
-
-function db-l(){
-  psql2 db04 legacy_production
-}
-
-function ghiu(){
-  ruby -e '["oruen","Magicdream","vladchi","dzhulk","kapkaev","trybeee", "apetrov"].each{|u| puts `ghi list -u #{u}` }'
-}
-function ghim(){
-  ruby -e '`ghi milestone | grep -v Backlog | grep due | cut -f1 -d: | tr -d " "`.split("\n").each{ |m| puts `ghi list -M #{m}`}'
-}
-function pgservers(){
-  cat ~/.pgpass | cut -d ':' -f 1 | ruby -ne 'puts "psql -U postgres -h #{$_}"'
-}
-
 function psql2 {
   psql -U `cat ~/.pgpass | grep $1 | cut -d: -f4` -h `cat ~/.pgpass | grep $1 | cut -d: -f1` $2
 }
 __rvm_project_rvmrc  #https://rvm.io/integration/zsh/
 
 # troubleshooting
-
-alias uibug="sudo killall -HUP WindowServer"
-
-function internet_connection(){ #Internet connection down
-  while :
-  do
-    ping  -t 2 -o -c 1 8.8.8.8 || terminal-notifier -message "Internet is down" -title "Connection"
-    sleep 5
-  done
-}
-
 function git_prune(){
   git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
   git fetch -p
@@ -141,3 +93,5 @@ zle -N zle-keymap-select
 
 alias spotlight-stop="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
 alias spotlight-start="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
+
+alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
