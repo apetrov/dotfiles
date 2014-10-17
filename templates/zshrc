@@ -12,7 +12,7 @@ fi
 #zshell
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
-plugins=(git osx rails ruby github brew heroku coffee)
+plugins=(bundler capistrano rake rake-fast cp gem gnu-utils jruby knife lein postgres git osx rails redis-cli rvm sbt scala tmux tmuxinator vi-mode sudo ruby github brew heroku coffee)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Library/PostgreSQL/9.3/bin:/Users/apetrov/node_modules/coffee-script/bin
@@ -90,3 +90,23 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+
+function psql3(){
+  psql -U `cat ~/.pgpass | grep $PSQL_SERVER | cut -d: -f4` -h `cat ~/.pgpass | grep $PSQL_SERVER | cut -d: -f1` $PSQL_DB
+}
+
+function connect(){
+  export PSQL_SERVER=$1
+  export PSQL_DB=$2
+}
+
+function pcsv(){
+  echo "copy($1) to STDOUT with csv;" | psql3
+}
+
+function phcsv(){
+  echo "copy($1) to STDOUT with csv header;" | psql3
+}
+
+
