@@ -9,9 +9,6 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='osx'
 fi
 
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-
 #zshell
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
@@ -21,6 +18,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Library/PostgreSQL/9.3/bin:/Users/apetrov/node_modules/coffee-script/bin
 export SBT_OPTS="-Xmx2048M -XX:MaxPermSize=256M" #Scala build too
 export EDITOR='vim'
+bindkey -v # VIM binding for zsh
 
 #SSH certificates
 ssh-add ~/.ssh/id_rsa >/dev/null  2>&1
@@ -32,21 +30,24 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #Redefine standard tools on osx
 if [[ $platform == 'osx' ]]; then
-  alias git=hub
+  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
   alias ctags="`brew --prefix`/bin/ctags"
   alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-  alias tvim="/Applications/MacVim.app/Contents/MacOS/Vim --startuptime vim.log" # Track slow vim scripts env
-  alias pg_dump="/Library/PostgreSQL/9.3/bin/pg_dump"
+  # https://gist.github.com/quickshiftin/9130153
+  alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
 fi
 
-alias virool-deploy="bundle exec rake assets:precompile && be cap deploy:assets:update_manifest && be cap deploy"
-
 function remote-db(){
-  rm -f config/database.yml;ln -s $(pwd)/config/database.remote.yml config/database.yml
+  rm -f config/database.yml;
+  ln -s $(pwd)/config/database.remote.yml config/database.yml;
+  echo "in remote mode";
 }
 
 function local-db(){
-  rm -f config/database.yml;ln -s $(pwd)/config/database.local.yml config/database.yml
+  rm -f config/database.yml;
+  ln -s $(pwd)/config/database.local.yml config/database.yml;
+  echo "in local mode"
 }
 
 function share(){
@@ -61,14 +62,16 @@ alias -g jsonformat='python -m json.tool'
 alias -g xmlformat="xmllint -format"
 alias -g be='bundle exec'
 alias -s log="tail -f"
+alias virool-deploy="bundle exec rake assets:precompile && be cap deploy:assets:update_manifest && be cap deploy"
+alias spotlight-stop="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
+alias spotlight-start="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
 
 function psql2 {
   psql -U `cat ~/.pgpass | grep $1 | cut -d: -f4` -h `cat ~/.pgpass | grep $1 | cut -d: -f1` $2
 }
 __rvm_project_rvmrc  #https://rvm.io/integration/zsh/
 
-# troubleshooting
-function git_prune(){
+function prune(){
   git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
   git fetch -p
   git gc
@@ -78,11 +81,8 @@ function whiteboard(){
   convert $1 -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 $2
 }
 
-function dublicate_open_with(){
-  /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
-}
-bindkey -v # VIM binding for zsh
-
+# promt patch
+# http://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode
 function zle-line-init zle-keymap-select {
     RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
     RPS2=$RPS1
@@ -90,8 +90,3 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
-
-alias spotlight-stop="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
-alias spotlight-start="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
-
-alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
