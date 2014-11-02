@@ -12,7 +12,7 @@ fi
 #zshell
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
-plugins=(bundler capistrano rake rake-fast cp gem gnu-utils jruby knife lein postgres git osx rails redis-cli rvm sbt scala tmux tmuxinator vi-mode sudo ruby github brew heroku coffee)
+plugins=(bundler rake rake-fast cp gem lein git vi-mode sudo ruby brew)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Library/PostgreSQL/9.3/bin:/Users/apetrov/node_modules/coffee-script/bin
