@@ -70,6 +70,7 @@ alias up='git pull'
 alias pull='git pull'
 alias -g push='git push'
 alias -g commit='git commit -m'
+alias deploy='bundle exec cap production deploy'
 
 function psql2 {
   psql -U `cat ~/.pgpass | grep $1 | cut -d: -f4` -h `cat ~/.pgpass | grep $1 | cut -d: -f1` $2
