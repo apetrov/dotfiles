@@ -114,5 +114,3 @@ function pcsv(){
 function phcsv(){
   echo "copy($1) to STDOUT with csv header;" | psql3
 }
-
-
