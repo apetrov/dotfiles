@@ -114,3 +114,7 @@ function pcsv(){
 function phcsv(){
   echo "copy($1) to STDOUT with csv header;" | psql3
 }
+
+function to(){
+  ssh virool@$1.virool
+}
