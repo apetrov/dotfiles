@@ -65,7 +65,6 @@ alias -s log="tail -f"
 alias virool-deploy="bundle exec rake assets:precompile && be cap deploy:assets:update_manifest && be cap deploy"
 alias spotlight-stop="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
 alias spotlight-start="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
-alias git='/usr/local/Cellar/git/2.1.2/bin/git'
 alias up='git pull'
 alias pull='git pull'
 alias -g push='git push'
@@ -118,3 +117,5 @@ function phcsv(){
 function to(){
   ssh virool@$1.virool
 }
+
+
