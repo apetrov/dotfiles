@@ -114,8 +114,12 @@ function phcsv(){
   echo "copy($1) to STDOUT with csv header;" | psql3
 }
 
+function campaigns-with-segments(){
+  psql -U postgres -h db01.virool -c "select id from campaigns where segments_predicate is not null and state = 'running'" virool_production
+}
+
 function to(){
   ssh virool@$1.virool
 }
 
-
+. ~/.z.sh
