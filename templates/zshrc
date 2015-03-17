@@ -15,9 +15,11 @@ ZSH_THEME="robbyrussell"
 #plugins=(bundler rake rake-fast cp gem lein git vi-mode sudo ruby brew)
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Library/PostgreSQL/9.3/bin:/Users/apetrov/node_modules/coffee-script/bin
+export PATH=$PATH:/Users/apetrov/gocode/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Library/PostgreSQL/9.3/bin:/Users/apetrov/node_modules/coffee-script/bin
 export SBT_OPTS="-Xmx2048M -XX:MaxPermSize=256M" #Scala build too
 export EDITOR='vim'
+export GOPATH=/Users/apetrov/gocode
+
 bindkey -v # VIM binding for zsh
 
 #SSH certificates
@@ -71,6 +73,15 @@ alias -g push='git push'
 alias -g commit='git commit -m'
 alias deploy='bundle exec cap production deploy'
 
+function vpn(){
+  osascript -e 'tell application "Viscosity" to connectall'
+}
+
+function novpn(){
+  osascript -e 'tell application "Viscosity" to disconnectall'
+}
+
+
 function psql2 {
   psql -U `cat ~/.pgpass | grep $1 | cut -d: -f4` -h `cat ~/.pgpass | grep $1 | cut -d: -f1` $2
 }
@@ -120,6 +131,10 @@ function campaigns-with-segments(){
 
 function to(){
   ssh virool@$1.virool
+}
+
+function vpn-dns(){
+  cat ~/projects/virool-chef/data_bags/zones/virool.json | jq  '.zone_info.records[] | {name: .name, ip: .ip } | .ip + " " + .name + ".virool"' | sed s/\"//g
 }
 
 . ~/.z.sh
