@@ -137,4 +137,9 @@ function vpn-dns(){
   cat ~/projects/virool-chef/data_bags/zones/virool.json | jq  '.zone_info.records[] | {name: .name, ip: .ip } | .ip + " " + .name + ".virool"' | sed s/\"//g
 }
 
+function update-vpn-dns(){
+  cat /etc/hosts | grep -v virool | sudo tee /etc/hosts
+  vpn-dns | sudo tee -a /etc/hosts
+}
+
 . ~/.z.sh
