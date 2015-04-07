@@ -142,4 +142,8 @@ function update-vpn-dns(){
   vpn-dns | sudo tee -a /etc/hosts
 }
 
+function jira(){
+  open https://viroolteam.atlassian.net/browse/SSP-111/$1
+}
+
 . ~/.z.sh
