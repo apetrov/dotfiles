@@ -72,6 +72,7 @@ alias pull='git pull'
 alias -g push='git push'
 alias -g commit='git commit -m'
 alias deploy='bundle exec cap production deploy'
+alias pulls='open http://github.com/OBSLabs/virool/pulls'
 
 function vpn(){
   osascript -e 'tell application "Viscosity" to connectall'
@@ -145,5 +146,6 @@ function update-vpn-dns(){
 function jira(){
   open https://viroolteam.atlassian.net/browse/SSP-111/$1
 }
+
 
 . ~/.z.sh
