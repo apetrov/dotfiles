@@ -20,3 +20,21 @@ windows:
       panes:
         - vim
         - git st
+
+  - psql:
+      layout: ab7a,178x55,0,0[178x52,0,0,1,178x2,0,53,0]
+      panes:
+        - psql2 db01 virool_production
+        - psql2 db05 analytics_production
+
+  - psql:
+      layout: ab7a,178x55,0,0[178x52,0,0,1,178x2,0,53,0]
+      panes:
+        - lein repl
+        - be rails c
+
+  - app:
+      layout: ab7a,178x55,0,0[178x52,0,0,1,178x2,0,53,0]
+      panes:
+        - be rails s
+        - redis-server
