@@ -1,5 +1,4 @@
 \set QUIET ON
-\set PROMPT1 '%[%033[33;1m%]%x%[%033[0m%]%[%033[1m%]%/%[%033[0m%]%R%# '
 \set PAGER OFF
 \pset format wrapped
 \set show_slow_queries
@@ -11,7 +10,7 @@
 \timing
 \encoding unicode
 \set QUIET OFF
-
+\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
 \set menu '\\i ~/.psqlrc'
 \set clear '\\! clear;'
 
