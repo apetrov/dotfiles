@@ -151,5 +151,11 @@ function origin(){
   echo "https://github.com/`git config --get remote.origin.url | cut -f2 -d':' | sed s/.git$//`"
 }
 
+function tmuxify(){
+  cat $1 | tmux load-buffer -
+  tmux paste-buffer -t right
+  tmux delete-buffer
+}
+
 
 . ~/.z.sh
