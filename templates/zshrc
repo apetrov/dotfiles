@@ -72,7 +72,7 @@ alias pull='git pull'
 alias -g push='git push'
 alias -g commit='git commit -m'
 alias deploy='bundle exec cap production deploy'
-alias pulls='open http://github.com/OBSLabs/virool/pulls'
+alias schema-load= "RAILS_ENV=test be rake db:schema:load db:schema:load_additional"
 
 function vpn(){
   osascript -e 'tell application "Viscosity" to connectall'
@@ -151,10 +151,14 @@ function origin(){
   echo "https://github.com/`git config --get remote.origin.url | cut -f2 -d':' | sed s/.git$//`"
 }
 
-function tmuxify(){
-  cat $1 | tmux load-buffer -
-  tmux paste-buffer -t right
-  tmux delete-buffer
+tmuxify () {
+  while read p; do
+    echo $p | tmux load-buffer -
+    tmux paste-buffer -t right
+    tmux delete-buffer
+    echo $p
+    sleep 5
+  done < $1
 }
 
 

@@ -24,10 +24,10 @@ windows:
   - psql:
       layout: ab7a,178x55,0,0[178x52,0,0,1,178x2,0,53,0]
       panes:
-        - psql2 db01 virool_production
-        - psql2 db05 analytics_production
+        - vim
+        - psql2 db19 virool_production
 
-  - psql:
+  - repl:
       layout: ab7a,178x55,0,0[178x52,0,0,1,178x2,0,53,0]
       panes:
         - lein repl
@@ -36,5 +36,5 @@ windows:
   - app:
       layout: ab7a,178x55,0,0[178x52,0,0,1,178x2,0,53,0]
       panes:
-        - foreman -s -f Procfile
+        - foreman start -f Procfile
         -
