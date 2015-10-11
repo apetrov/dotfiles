@@ -15,10 +15,9 @@ ZSH_THEME="robbyrussell"
 #plugins=(bundler rake rake-fast cp gem lein git vi-mode sudo ruby brew)
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:/Users/apetrov/gocode/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Library/PostgreSQL/9.3/bin:/Users/apetrov/node_modules/coffee-script/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
 export SBT_OPTS="-Xmx2048M -XX:MaxPermSize=256M" #Scala build too
 export EDITOR='vim'
-export GOPATH=/Users/apetrov/gocode
 
 bindkey -v # VIM binding for zsh
 
@@ -35,7 +34,6 @@ if [[ $platform == 'osx' ]]; then
   PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
   alias ctags="`brew --prefix`/bin/ctags"
-  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
   # https://gist.github.com/quickshiftin/9130153
   alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
 fi
