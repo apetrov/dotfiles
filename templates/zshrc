@@ -71,7 +71,7 @@ alias -g push='git push'
 alias -g commit='git commit -m'
 alias deploy='bundle exec cap production deploy'
 alias schema-load= "RAILS_ENV=test be rake db:schema:load db:schema:load_additional"
-alias -g gistme = 'gist -p --copy '
+alias -g gistme="gist -p --copy "
 
 function vpn(){
   osascript -e 'tell application "Viscosity" to connectall'
