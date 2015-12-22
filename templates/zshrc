@@ -56,7 +56,6 @@ function share(){
 }
 
 # Convinience tools
-alias hh='pbpaste | html2haml | pbcopy'
 alias ss='python -m SimpleHTTPServer'
 alias -g jsonformat='python -m json.tool'
 alias -g xmlformat="xmllint -format"
@@ -67,10 +66,12 @@ alias spotlight-stop="sudo launchctl unload -w /System/Library/LaunchDaemons/com
 alias spotlight-start="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
 alias up='git pull'
 alias pull='git pull'
-alias -g push='git push'
-alias -g commit='git commit -m'
+alias push='git push'
+alias commit='git commit -m'
 alias deploy='bundle exec cap production deploy'
+alias -g vssh='ssh virool@'
 alias schema-load= "RAILS_ENV=test be rake db:schema:load db:schema:load_additional"
+alias -g gistme="gist -p --copy "
 alias -g gistme="gist -p --copy "
 
 function vpn(){
