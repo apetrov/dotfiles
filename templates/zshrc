@@ -18,6 +18,8 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
 export SBT_OPTS="-Xmx2048M -XX:MaxPermSize=256M" #Scala build too
 export EDITOR='vim'
+export GNUTERM='X11'
+
 
 bindkey -v # VIM binding for zsh
 
