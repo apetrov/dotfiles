@@ -57,6 +57,12 @@ function share(){
   echo `pbpaste`;
 }
 
+function c-b(){
+  git checkout .
+  git checkout master
+  git checkout -b $1
+}
+
 # Convinience tools
 alias ss='python -m SimpleHTTPServer'
 alias -g jsonformat='python -m json.tool'
