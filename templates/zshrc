@@ -169,5 +169,11 @@ tmuxify () {
   done < $1
 }
 
+git-log(){
+  while read p; do;
+    git show $p;
+  done < $1
+}
+
 
 . ~/.z.sh
