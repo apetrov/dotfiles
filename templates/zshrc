@@ -175,5 +175,9 @@ git-log(){
   done < $1
 }
 
+url-encode(){
+  echo $1 | ruby -ne 'require "cgi"; puts CGI.escape($_.strip)'
+}
+
 
 . ~/.z.sh
