@@ -12,6 +12,8 @@ Ciphers blowfish-cbc
 
 Host *
   ForwardAgent yes
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
 
 Host db01
   User virool
