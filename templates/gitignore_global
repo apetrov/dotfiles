@@ -1,4 +1,6 @@
 *~
 .DS_Store
 Session.vim
+__pycache__/
+
 
