@@ -106,17 +106,6 @@ function whiteboard(){
   convert $1 -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 $2
 }
 
-# promt patch
-# http://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode
-function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-    RPS2=$RPS1
-    zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
-
-
 function psql3(){
   psql -U `cat ~/.pgpass | grep $PSQL_SERVER | cut -d: -f4` -h `cat ~/.pgpass | grep $PSQL_SERVER | cut -d: -f1` $PSQL_DB
 }
