@@ -49,13 +49,8 @@ function novpn(){
   osascript -e 'tell application "Viscosity" to disconnectall'
 }
 
-
 function psql2 {
   psql -U $(cat ~/.pgpass | grep $1 | cut -d: -f4) -h $(cat ~/.pgpass | grep $1 | cut -d: -f1 ) $2
-}
-
-function vpn-dns(){
-  cat ~/projects/virool-chef/data_bags/zones/virool.json | jq  '.zone_info.records[] | {name: .name, ip: .ip } | .ip + " " + .name + ".virool"' | sed s/\"//g
 }
 
 . ~/.z.sh
