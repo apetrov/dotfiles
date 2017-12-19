@@ -27,10 +27,6 @@ bindkey -v # VIM binding for zsh
 ssh-add ~/.ssh/id_rsa >/dev/null  2>&1
 ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
 
-#RVM
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 #Redefine standard tools on osx
 if [[ $platform == 'osx' ]]; then
   PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -40,47 +36,10 @@ if [[ $platform == 'osx' ]]; then
   alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
 fi
 
-function remote-db(){
-  rm -f config/database.yml;
-  ln -s $(pwd)/config/database.remote.yml config/database.yml;
-  echo "in remote mode";
-}
-
-function local-db(){
-  rm -f config/database.yml;
-  ln -s $(pwd)/config/database.local.yml config/database.yml;
-  echo "in local mode"
-}
-
-function share(){
-  curl --upload-file ./$1 https://transfer.sh/$1 | pbcopy;
-  echo `pbpaste`;
-}
-
-function c-b(){
-  git checkout .
-  git checkout master
-  git checkout -b $1
-}
-
 # Convinience tools
-alias ss='python -m SimpleHTTPServer'
-alias -g jsonformat='python -m json.tool'
-alias -g xmlformat="xmllint -format"
 alias -g be='bundle exec'
-alias -s log="tail -f"
-alias virool-deploy="bundle exec rake assets:precompile && be cap deploy:assets:update_manifest && be cap deploy"
 alias spotlight-stop="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
 alias spotlight-start="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
-alias up='git pull'
-alias pull='git pull'
-alias push='git push'
-alias commit='git commit -m'
-alias deploy='bundle exec cap production deploy'
-alias -g vssh='ssh virool@'
-alias schema-load= "RAILS_ENV=test be rake db:schema:load db:schema:load_additional"
-alias -g gistme="gist -p --copy "
-alias -g gistme="gist -p --copy "
 
 function vpn(){
   osascript -e 'tell application "Viscosity" to connectall'
@@ -92,81 +51,11 @@ function novpn(){
 
 
 function psql2 {
-  psql -U `cat ~/.pgpass | grep $1 | cut -d: -f4` -h `cat ~/.pgpass | grep $1 | cut -d: -f1` $2
-}
-__rvm_project_rvmrc  #https://rvm.io/integration/zsh/
-
-function prune(){
-  git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
-  git fetch -p
-  git gc
-}
-
-function whiteboard(){
-  convert $1 -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 $2
-}
-
-function psql3(){
-  psql -U `cat ~/.pgpass | grep $PSQL_SERVER | cut -d: -f4` -h `cat ~/.pgpass | grep $PSQL_SERVER | cut -d: -f1` $PSQL_DB
-}
-
-function connect(){
-  export PSQL_SERVER=$1
-  export PSQL_DB=$2
-}
-
-function pcsv(){
-  echo "copy($1) to STDOUT with csv;" | psql3
-}
-
-function phcsv(){
-  echo "copy($1) to STDOUT with csv header;" | psql3
-}
-
-function campaigns-with-segments(){
-  psql -U postgres -h db01.virool -c "select id from campaigns where segments_predicate is not null and state = 'running'" virool_production
-}
-
-function to(){
-  ssh virool@$1.virool
+  psql -U $(cat ~/.pgpass | grep $1 | cut -d: -f4) -h $(cat ~/.pgpass | grep $1 | cut -d: -f1 ) $2
 }
 
 function vpn-dns(){
   cat ~/projects/virool-chef/data_bags/zones/virool.json | jq  '.zone_info.records[] | {name: .name, ip: .ip } | .ip + " " + .name + ".virool"' | sed s/\"//g
 }
-
-function update-vpn-dns(){
-  cat /etc/hosts | grep -v virool | sudo tee /etc/hosts
-  vpn-dns | sudo tee -a /etc/hosts
-}
-
-function jira(){
-  open https://viroolteam.atlassian.net/browse/SSP-111/$1
-}
-
-function origin(){
-  echo "https://github.com/`git config --get remote.origin.url | cut -f2 -d':' | sed s/.git$//`"
-}
-
-tmuxify () {
-  while read p; do
-    echo $p | tmux load-buffer -
-    tmux paste-buffer -t right
-    tmux delete-buffer
-    echo $p
-    sleep 5
-  done < $1
-}
-
-git-log(){
-  while read p; do;
-    git show $p;
-  done < $1
-}
-
-url-encode(){
-  echo $1 | ruby -ne 'require "cgi"; puts CGI.escape($_.strip)'
-}
-
 
 . ~/.z.sh
