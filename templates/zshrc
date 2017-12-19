@@ -54,3 +54,5 @@ function psql2 {
 }
 
 . ~/.z.sh
+
+eval "$(rbenv init -)"
