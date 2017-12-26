@@ -13,6 +13,7 @@ fi
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 #plugins=(bundler rake rake-fast cp gem lein git vi-mode sudo ruby brew)
+plugins=(docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
