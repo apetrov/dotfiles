@@ -8,96 +8,9 @@ KeepAlive yes
 TCPKeepAlive yes
 PermitLocalCommand yes
 PreferredAuthentications publickey
-Ciphers blowfish-cbc
+Ciphers blowfish-cbc,chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
 
 Host *
   ForwardAgent yes
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
-
-Host db01
-  User virool
-  HostName db01.virool
-
-Host db02
-  User virool
-  HostName db02.virool
-
-Host db03
-  User virool
-  HostName db03.virool
-
-Host db04
-  User virool
-  HostName db03.virool
-
-Host admin01
-  User virool
-  HostName admin01.virool
-
-Host web01
-  User virool
-  HostName web01.virool
-
-Host app01
-  User virool
-  HostName bg01.virool
-
-Host app02
-  User virool
-  HostName bg02.virool
-
-Host api01
-  User virool
-  HostName api01.virool
-
-Host api02
-  User virool
-  HostName api02.virool
-
-Host api03
-  User virool
-  HostName api03.virool
-
-Host api04
-  User virool
-  HostName api04.virool
-
-Host api05
-  User virool
-  HostName api05.virool
-
-Host cache01
-  User virool
-  HostName cache01.virool
-
-Host cache03
-  User virool
-  HostName cache03.virool
-
-Host cache03
-  User virool
-  HostName cache03.virool
-
-Host redis01
-  User virool
-  HostName redis01.virool
-
-Host redis02
-  User virool
-  HostName redis02.virool
-
-
-Host queue01
-  User virool
-  HostName queue01.virool
-
-Host wp
-  User virool
-  HostName blog.virool.com
-  LocalCommand cd /var/rails/virool.com/current
-
-Host dev
-  HostName ec2-50-16-146-231.compute-1.amazonaws.com
-  LocalForward 3000 127.0.0.1:3000
-  User ubuntu
