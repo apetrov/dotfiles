@@ -12,12 +12,10 @@ fi
 #zshell
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
-#plugins=(bundler rake rake-fast cp gem lein git vi-mode sudo ruby brew)
-plugins=(docker-compose)
+plugins=(bundler rake cp gem git vi-mode sudo ruby brew)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
-export SBT_OPTS="-Xmx2048M -XX:MaxPermSize=256M" #Scala build too
 export EDITOR='vim'
 export GNUTERM='X11'
 
@@ -28,27 +26,8 @@ bindkey -v # VIM binding for zsh
 ssh-add ~/.ssh/id_rsa >/dev/null  2>&1
 ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
 
-#Redefine standard tools on osx
-if [[ $platform == 'osx' ]]; then
-  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-  alias ctags="`brew --prefix`/bin/ctags"
-  # https://gist.github.com/quickshiftin/9130153
-  alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
-fi
-
 # Convinience tools
 alias -g be='bundle exec'
-alias spotlight-stop="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
-alias spotlight-start="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist"
-
-function vpn(){
-  osascript -e 'tell application "Viscosity" to connectall'
-}
-
-function novpn(){
-  osascript -e 'tell application "Viscosity" to disconnectall'
-}
 
 function psql2 {
   psql -U $(cat ~/.pgpass | grep $1 | cut -d: -f4) -h $(cat ~/.pgpass | grep $1 | cut -d: -f1 ) $2
