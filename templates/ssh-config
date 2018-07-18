@@ -16,6 +16,11 @@ Host *
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
 
+Host 18.222.52.40
+  ForwardAgent yes
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+
   LocalForward 3000 localhost:3000 #  virool_web_1
 
   LocalForward 3030 localhost:3030   #  cheetahx_web_
