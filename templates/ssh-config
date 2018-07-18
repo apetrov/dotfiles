@@ -8,9 +8,23 @@ KeepAlive yes
 TCPKeepAlive yes
 PermitLocalCommand yes
 PreferredAuthentications publickey
-Ciphers blowfish-cbc,chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+Ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+#Ciphers blowfish-cbc
 
 Host *
   ForwardAgent yes
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
+
+  LocalForward 3000 localhost:3000 #  virool_web_1
+
+  LocalForward 3030 localhost:3030   #  cheetahx_web_
+
+  LocalForward 3031 localhost:3031   #  cheetahx_admin_1
+
+  LocalForward 5000 localhost:5000 #  virool_eventsampler_1
+
+  LocalForward 8080 localhost:8080 #  notebooks_py_1
+
+  LocalForward 8081 localhost:8081   #  eventsampler_jupyter_1
+
