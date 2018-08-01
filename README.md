@@ -1,6 +1,21 @@
-dotfiles  
-==========
+### Installation
+```sh
+make all
+```
 
+### Configs
+* agignore
+* ctags
+* git
+* gitignore_global
+* inputrc
+* irbrc
+* psqlrc
+* spacemacs
+* ssh
+* tmux
+* zprofile
+* zsh
 
-requires tmux, zsh, git@github.com:ChrisJohnsen/tmux-MacOSX-pasteboard.git, ruby
-iterm2 scheme: https://github.com/mbadolato/iTerm2-Color-Schemes
+### VIM
+Vim config is not part of this repo. [Vim files](https://github.com/apetrov/vimfiles)
