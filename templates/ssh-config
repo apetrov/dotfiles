@@ -17,6 +17,10 @@ Host *
   UserKnownHostsFile=/dev/null
 
 Host 18.222.52.40
+  Protocol 2
+  Compression yes
+  TCPKeepAlive yes
+  ServerAliveInterval 20
   ForwardAgent yes
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
