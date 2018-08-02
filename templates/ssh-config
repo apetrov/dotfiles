@@ -16,6 +16,11 @@ Host *
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
 
+
+Host github.com
+	ControlMaster auto
+  ControlPersist 120
+
 Host 18.222.52.40
   Protocol 2
   Compression yes
