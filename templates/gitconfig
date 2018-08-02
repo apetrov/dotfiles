@@ -26,18 +26,9 @@
   hist = log --pretty="tformat:\"%h %ad | %s%d [%an]\"" --date=short --decorate
   commits = log --no-merges  --no-decorate --pretty="%h" --since=7.days
   who = shortlog -n -s --no-merges
-	ctags = !.git/hooks/ctags
+  ctags = !.git/hooks/ctags
 
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [init]
 	templatedir = ~/.git_template
 [push]
   default = current
-
-[credential]
-	helper = osxkeychain
