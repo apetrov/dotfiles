@@ -2,13 +2,17 @@
 [user]
 	name = Alexander Petrov
 	email = alexonrails@gmail.com
+
 [github]
 	user = apetrov
+
 [core]
 	editor = vim
 	excludesfile = /Users/apetrov/.gitignore_global
+
 [color]
 	ui = true
+
 [alias]
   st = status
   ci = commit
@@ -30,5 +34,9 @@
 
 [init]
 	templatedir = ~/.git_template
+
 [push]
   default = current
+
+[credential]
+	helper = store
