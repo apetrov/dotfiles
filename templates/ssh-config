@@ -9,7 +9,6 @@ TCPKeepAlive yes
 PermitLocalCommand yes
 PreferredAuthentications publickey
 Ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
-ForwardX11 yes
 
 Host *
   ForwardAgent yes
@@ -22,6 +21,7 @@ Host github.com
   ControlPersist 120
 
 Host 18.222.52.40
+  ForwardX11 yes
   Protocol 2
   Compression yes
   TCPKeepAlive yes
