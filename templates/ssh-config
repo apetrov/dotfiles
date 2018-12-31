@@ -15,9 +15,8 @@ Host *
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
 
-
 Host github.com
-	ControlMaster auto
+  ControlMaster auto
   ControlPersist 120
 
 Host 18.222.52.40
