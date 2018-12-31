@@ -30,8 +30,4 @@ ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
 # Convinience tools
 alias -g be='bundle exec'
 
-function psql2 {
-  psql -U $(cat ~/.pgpass | grep $1 | cut -d: -f4) -h $(cat ~/.pgpass | grep $1 | cut -d: -f1 ) $2
-}
-
 [ -d "$HOME/.rbenv" ] &&  eval "$(rbenv init -)"
