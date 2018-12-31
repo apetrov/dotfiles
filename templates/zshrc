@@ -28,3 +28,5 @@ ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
 alias -g be='bundle exec'
 
 [ -d "$HOME/.rbenv" ] &&  eval "$(rbenv init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
