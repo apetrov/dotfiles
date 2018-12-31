@@ -1,6 +1,3 @@
-#login shell
-# /usr/local/Cellar/zsh/5.0.2/bin/zsh-5.0.2 -i
-# don't use anything below this version!
 platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
