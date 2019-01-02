@@ -9,7 +9,7 @@ fi
 #zshell
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
-plugins=(bundler rake cp gem git vi-mode sudo ruby brew)
+plugins=(bundler rake cp gem git vi-mode sudo ruby brew z)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
@@ -32,6 +32,8 @@ alias vimfzf="vim \$(fzf)"
 [ -d "$HOME/.rbenv" ] &&  eval "$(rbenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f $HOME/.oh-my-zsh/plugins/z/z.sh ] && . $HOME/.oh-my-zsh/plugins/z/z.sh
 
 # https://github.com/SidOfc/dotfiles/blob/d07fa3862ed065c2a5a7f1160ae98416bfe2e1ee/zsh/kp
 kp(){
