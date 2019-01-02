@@ -3,6 +3,8 @@ Dotfiles for ruby/python development (Tmux, Vim, ZSH) templates along with insta
 Tested with OSX 10.14 and Ubuntu 18.04
 
 ### Installation
+
+Just run make script and all files will be linked to their proper locations:
 ```sh
 make all
 ```
