@@ -8,9 +8,11 @@ Just run make script and all files will be linked to their proper locations:
 ```sh
 make all
 ```
+### Prerequisite
+* fzf https://github.com/junegunn/fzf#using-git
+* oh-my-zsh https://github.com/robbyrussell/oh-my-zsh#basic-installation
 
 ### Configs
-* agignore
 * ctags
 * git
 * gitignore_global
