@@ -21,6 +21,7 @@ export GNUTERM='X11'
 bindkey -v # VIM binding for zsh
 
 #SSH certificates
+eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa >/dev/null  2>&1
 ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
 
@@ -44,3 +45,5 @@ kp(){
     kp
   fi
 }
+
+
