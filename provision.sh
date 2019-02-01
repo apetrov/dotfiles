@@ -4,8 +4,13 @@ export GROUP_DOCKER_ID=$(getent group docker | cut -f3 -d':')
 export SUBGID_MAPPING="$USER:$GROUP_DOCKER_ID:1"
 echo $SUBGID_MAPPING
 
-sudo cat /etc/docker/daemon.json
-sudo cat /etc/subuid
+install_dotfiles(){
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+  git clone git@github.com:apetrov/dotfiles.git ~/dotfiles
+  cd ~/dotfiles && make all
+  source ~/.zshrc
+}
 
 add_docker_daemon(){
   sudo mkdir -p /etc/docker
@@ -21,7 +26,8 @@ add_subuid_mapping(){
   echo "ubuntu:165536:65536" | sudo tee -a /etc/subuid
 }
 
-add_docker_daemon
-add_subuid_mapping
-sudo service docker restart
+#install_dotfiles()
+#add_docker_daemon
+#add_subuid_mapping
+#sudo service docker restart
 
