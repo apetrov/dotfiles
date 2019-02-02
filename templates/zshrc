@@ -46,4 +46,6 @@ kp(){
   fi
 }
 
-
+if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
+  tmux attach-session -t dotfiles || tmux new-session -s dotfiles
+fi;
