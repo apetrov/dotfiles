@@ -27,7 +27,6 @@ ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
 
 # Convinience tools
 alias -g be='bundle exec'
-alias gc="git checkout \$(git for-each-ref --format='%(refname)' refs/heads/ | cut -f3 -d'/' | fzf)"
 alias vimfzf="vim \$(fzf)"
 
 [ -d "$HOME/.rbenv" ] &&  eval "$(rbenv init -)"
