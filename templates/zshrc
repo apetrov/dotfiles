@@ -13,7 +13,6 @@ plugins=(bundler rake cp gem git vi-mode sudo ruby brew z)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
-[ -d "$HOME/.rbenv" ] && export PATH="$HOME/.rbenv/bin:$PATH"
 export EDITOR='vim'
 export GNUTERM='X11'
 
@@ -22,12 +21,12 @@ bindkey -v # VIM binding for zsh
 
 #SSH certificates
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa >/dev/null  2>&1
-ssh-add ~/.ssh/apetrov_virool_rsa >/dev/null  2>&1
 
 # Convinience tools
 alias -g be='bundle exec'
 alias vimfzf="vim \$(fzf)"
+
+[ -d "$HOME/.rbenv" ] && export PATH="$HOME/.rbenv/bin:$PATH"
 
 [ -d "$HOME/.rbenv" ] &&  eval "$(rbenv init -)"
 
