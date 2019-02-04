@@ -33,6 +33,8 @@ alias vimfzf="vim \$(fzf)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+[ -f ~/.secret.sh ] && source ~/.secret.sh
+
 [ -f $HOME/.oh-my-zsh/plugins/z/z.sh ] && . $HOME/.oh-my-zsh/plugins/z/z.sh
 
 # https://github.com/SidOfc/dotfiles/blob/d07fa3862ed065c2a5a7f1160ae98416bfe2e1ee/zsh/kp
