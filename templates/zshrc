@@ -26,6 +26,10 @@ eval "$(ssh-agent -s)"
 alias -g be='bundle exec'
 alias vimfzf="vim \$(fzf)"
 
+# git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+# restart shell and then:
+# git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+
 [ -d "$HOME/.rbenv" ] && export PATH="$HOME/.rbenv/bin:$PATH"
 
 [ -d "$HOME/.rbenv" ] &&  eval "$(rbenv init -)"
