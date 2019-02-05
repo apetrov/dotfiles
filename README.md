@@ -11,6 +11,8 @@ make all
 ### Prerequisite
 * fzf https://github.com/junegunn/fzf#using-git
 * oh-my-zsh https://github.com/robbyrussell/oh-my-zsh#basic-installation
+* rbenv https://github.com/rbenv/rbenv#basic-github-checkout
+* ruby-build https://github.com/rbenv/ruby-build#upgrading
 
 ### Configs
 * ctags
