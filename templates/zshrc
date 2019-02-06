@@ -60,3 +60,9 @@ start_vpn(){
   echo "$LDAP_PASSWORD" | tee -a $ldap_file
   sudo openvpn --config  $OVPN_FILE --auth-user-pass $ldap_file
 }
+
+#https://github.com/thoughtbot/dotfiles/blob/master/zsh/functions/mcd
+# Make directory and change into it.
+function mcd() {
+  mkdir -p "$1" && cd "$1";
+}
