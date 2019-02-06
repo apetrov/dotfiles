@@ -4,14 +4,14 @@
 	email = alexonrails@gmail.com
 
 [github]
-	user = apetrov
+  user = apetrov
 
 [core]
-	editor = vim
-	excludesfile = /Users/apetrov/.gitignore_global
+  editor = vim
+  excludesfile = ~/.gitignore_global
 
 [color]
-	ui = true
+  ui = true
 
 [alias]
   st = status
@@ -33,10 +33,10 @@
   ctags = !.git/hooks/ctags
 
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
 
 [push]
   default = current
 
 [credential]
-	helper = store
+  helper = store
