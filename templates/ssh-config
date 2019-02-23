@@ -19,7 +19,7 @@ Host github.com
   ControlMaster auto
   ControlPersist 120
 
-Host 18.222.52.40
+Host workstation.do
   ForwardX11 yes
   Protocol 2
   Compression yes
