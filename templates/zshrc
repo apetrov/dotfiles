@@ -61,6 +61,10 @@ start_vpn(){
   sudo openvpn --config  $OVPN_FILE --auth-user-pass $ldap_file
 }
 
+function run_ctags(){
+  ctags -R --languages=ruby --exclude=.git --exclude=log .
+}
+
 #https://github.com/thoughtbot/dotfiles/blob/master/zsh/functions/mcd
 # Make directory and change into it.
 function mcd() {
