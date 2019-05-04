@@ -32,6 +32,8 @@ Host workstation.do
   LocalForward 3030 localhost:3030
   LocalForward 3031 localhost:3031
   LocalForward 3034 localhost:3034
+  LocalForward 6066 localhost:6066
+  LocalForward 7077 localhost:7077
   LocalForward 5000 localhost:5000
   LocalForward 8080 localhost:8080
   LocalForward 8081 localhost:8081
@@ -42,3 +44,10 @@ Host workstation.do
   LocalForward 1883 localhost:1883
   LocalForward 8083 localhost:8083
   LocalForward 18083 localhost:18083
+
+Host botstown
+  HostName 64.58.119.68
+  Protocol 2
+  Compression yes
+  TCPKeepAlive yes
+  LocalForward 8084 localhost:8080
