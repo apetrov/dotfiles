@@ -9,6 +9,7 @@ TCPKeepAlive yes
 PermitLocalCommand yes
 PreferredAuthentications publickey
 Ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+Include ~/.ssh/config_appgrowth
 
 Host *
   ForwardAgent yes
@@ -44,10 +45,3 @@ Host workstation.do
   LocalForward 1883 localhost:1883
   LocalForward 8083 localhost:8083
   LocalForward 18083 localhost:18083
-
-Host botstown
-  HostName 64.58.119.68
-  Protocol 2
-  Compression yes
-  TCPKeepAlive yes
-  LocalForward 8084 localhost:8080
