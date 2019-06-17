@@ -26,6 +26,6 @@ ssh-config:
 	mkdir -p ~/.ssh
 	ln $$(pwd)/templates/ssh-config ~/.ssh/config
 
-	[ ! -f ~/.ssh/secret ] && echo "" > ~/.ssh/secret
+	#[ ! -f ~/.ssh/secret ] && echo "" > ~/.ssh/secret
 
 link: dotfiles git_template ssh-config
