@@ -9,7 +9,7 @@ TCPKeepAlive yes
 PermitLocalCommand yes
 PreferredAuthentications publickey
 Ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
-Include ~/.ssh/config_appgrowth
+Include ~/.ssh/secret
 
 Host *
   ForwardAgent yes
@@ -20,4 +20,3 @@ Host github.com
   ControlMaster auto
   ControlPersist 120
 
-Include ~/.ssh/secret
