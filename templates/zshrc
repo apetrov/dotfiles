@@ -19,9 +19,6 @@ export GNUTERM='X11'
 
 bindkey -v # VIM binding for zsh
 
-#SSH certificates
-eval "$(ssh-agent -s)"
-
 # Convinience tools
 alias -g be='bundle exec'
 alias vimfzf="vim \$(fzf)"
