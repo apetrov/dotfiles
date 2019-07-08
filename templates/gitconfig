@@ -25,6 +25,7 @@
   hist = log --pretty="tformat:\"%h %ad | %s%d [%an]\"" --date=short --decorate
   who = shortlog -n -s --no-merges
   ctags = !.git/hooks/ctags
+  stat = !git diff --stat $(git merge-base HEAD master)
 
 [init]
   templatedir = ~/.git_template
