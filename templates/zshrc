@@ -52,7 +52,7 @@ if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 fi;
 
 start_vpn(){
-  sudo openvpn --config  $HOME/.$1.ovpn --auth-user-pass  $HOME/.$1.vpn.ldap
+  sudo openvpn --config  $HOME/.vpn/$1.ovpn --auth-user-pass  $HOME/.vpn/$1.ldap
 }
 
 function run_ctags(){
