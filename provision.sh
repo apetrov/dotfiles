@@ -1,7 +1,7 @@
 #!/bin/bash
-sudo apt update
-sudo apt clean
-sudo apt install -y build-essential tmux zsh unzip jq python3-pip
+sudo apt-get update
+sudo apt-get clean
+sudo apt-get install -y build-essential tmux zsh unzip jq python3-pip
 
 [ -f $HOME/security.tar ] && echo "Installing security" && mkdir -p security && mv security.tar security/ && cd security && tar -xf security.tar && make all
 
