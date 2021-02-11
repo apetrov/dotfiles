@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt update && sudo apt install -y build-essential tmux zsh unzip
+sudo apt update && sudo apt install -y build-essential tmux zsh unzip jq
 
 [ -f $HOME/security.tar ] && echo "Installing security" && mkdir -p security && mv security.tar security/ && cd security && tar -xf security.tar && make all
 
