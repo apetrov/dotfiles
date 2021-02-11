@@ -14,3 +14,5 @@ sudo apt update && sudo apt install -y build-essential tmux zsh unzip jq
 [ ! -d $HOME/aws ] && cd $HOME && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip" &&  unzip awscliv2.zip && sudo ./aws/install
 
 [ ! -d $HOME/dotfiles ] && git clone git@github.com:apetrov/dotfiles.git $HOME/dotfiles && cd $HOME/dotfiles && make all
+
+[ ! -d $HOME/.oh-my-zsh/custom/plugins/zsh-z ] && git clone https://github.com/agkozak/zsh-z $HOME/.oh-my-zsh/custom/plugins/zsh-z
