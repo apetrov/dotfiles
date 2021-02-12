@@ -17,6 +17,6 @@ sudo apt-get install -y build-essential tmux zsh unzip jq python3-pip
 
 [ ! -d $HOME/dotfiles ] && git clone git@github.com:apetrov/dotfiles.git $HOME/dotfiles && cd $HOME/dotfiles && make all
 
-[ ! -d $HOME/.oh-my-zsh/custom/plugins/zsh-z ] && git clone https://github.com/agkozak/zsh-z $HOME/.oh-my-zsh/custom/plugins/zsh-z
+[ ! -d $HOME/.oh-my-zsh/custom/plugins/zsh-z ] && mkdir -p $HOME/.oh-my-zsh/custom/plugins && git clone https://github.com/agkozak/zsh-z $HOME/.oh-my-zsh/custom/plugins/zsh-z
 
 chsh -s $(which zsh)
