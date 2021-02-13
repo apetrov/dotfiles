@@ -19,6 +19,5 @@ sudo apt-get install -qq -y build-essential tmux zsh unzip jq python3-pip
 
 [ ! -d $HOME/.oh-my-zsh/custom/plugins/zsh-z ] && mkdir -p $HOME/.oh-my-zsh/custom/plugins && git clone --quiet https://github.com/agkozak/zsh-z $HOME/.oh-my-zsh/custom/plugins/zsh-z
 
-vim +BundleInstall +qall 2&> /dev/null
 
 chsh -s $(which zsh)
