@@ -17,5 +17,5 @@ sudo apt-get install -qq -y build-essential tmux zsh unzip jq python3-pip
 
 [ ! -d $HOME/.oh-my-zsh/custom/plugins/zsh-z ] && mkdir -p $HOME/.oh-my-zsh/custom/plugins && git clone --quiet https://github.com/agkozak/zsh-z $HOME/.oh-my-zsh/custom/plugins/zsh-z
 
-
+cat /etc/pam.d/chsh | sed "s/required/sufficient/g" | sudo tee /etc/pam.d/chsh
 chsh -s $(which zsh)
