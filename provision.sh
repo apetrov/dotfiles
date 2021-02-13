@@ -5,7 +5,7 @@ sudo apt-get install -qq -y build-essential tmux zsh unzip jq python3-pip
 
 [ -f $HOME/security.tar ] && echo "Installing security" && mkdir -p security && mv security.tar security/ && cd security && tar -xf security.tar && make all
 
-[ ! -d $HOME/.rbenv ] && git clone --quiet https://github.com/rbenv/rbenv.git ~/.rbenv
+# [ ! -d $HOME/.rbenv ] && git clone --quiet https://github.com/rbenv/rbenv.git ~/.rbenv
 
 [ ! -d $HOME/.oh-my-zsh ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
