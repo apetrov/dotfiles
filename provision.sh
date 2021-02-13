@@ -11,8 +11,6 @@ sudo apt-get install -qq -y build-essential tmux zsh unzip jq python3-pip
 
 [ ! -d $HOME/.fzf ] && git clone --quiet --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install
 
-[ ! -d $HOME/vimfiles ] && git clone --quiet --recursive https://github.com/apetrov/vimfiles $HOME/vimfiles && ln -s $HOME/vimfiles $HOME/.vim
-
 [ ! -d $HOME/aws ] && cd $HOME && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip" &&  unzip awscliv2.zip && sudo ./aws/install
 
 [ ! -d $HOME/dotfiles ] && git clone --quiet git@github.com:apetrov/dotfiles.git $HOME/dotfiles && cd $HOME/dotfiles && make all
