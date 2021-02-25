@@ -3,7 +3,7 @@ sudo apt-get update -qq
 sudo apt-get clean -qq
 sudo apt-get install -qq -y build-essential tmux zsh unzip jq python3-pip openvpn
 
-[ -f $HOME/security.tar ] && echo "Installing security" && mkdir -p security && mv security.tar security/ && cd security && tar -xf security.tar && make all
+[ -d $HOME/security ] && echo "Installing security" && cd security && make all
 
 # [ ! -d $HOME/.rbenv ] && git clone --quiet https://github.com/rbenv/rbenv.git ~/.rbenv
 
