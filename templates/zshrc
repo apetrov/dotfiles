@@ -12,9 +12,11 @@ if [ -d $HOME/.oh-my-zsh ]; then
   plugins=(bundler rake cp gem git vi-mode sudo ruby brew z)
   source $ZSH/oh-my-zsh.sh
 fi
-#zshell
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
+export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
+
+[ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
+
 export EDITOR='vim'
 export GNUTERM='X11'
 
