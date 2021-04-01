@@ -17,5 +17,8 @@ sudo apt-get install -qq -y build-essential tmux zsh unzip jq python3-pip openvp
 
 [ ! -d $HOME/.oh-my-zsh/custom/plugins/zsh-z ] && mkdir -p $HOME/.oh-my-zsh/custom/plugins && git clone --quiet https://github.com/agkozak/zsh-z $HOME/.oh-my-zsh/custom/plugins/zsh-z
 
+# create default env
+python3 -m venv ~/default
+
 cat /etc/pam.d/chsh | sed "s/required/sufficient/g" | sudo tee /etc/pam.d/chsh > /dev/null
 chsh -s $(which zsh)
