@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt-get update -qq
 sudo apt-get clean -qq
-sudo apt-get install -qq -y build-essential tmux zsh unzip jq python3-pip openvpn kafkacat python3-venv
+sudo apt-get install -qq -y build-essential tmux zsh unzip jq python3-pip openvpn kafkacat python3-venv libpq-dev python-dev
 
 [ -d $HOME/security ] && echo "Installing security" && cd security && make all
 
