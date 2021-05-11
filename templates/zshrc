@@ -2,6 +2,7 @@ platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
    platform='linux'
+   export PROMPT='%~ %# '
 elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='osx'
 fi
