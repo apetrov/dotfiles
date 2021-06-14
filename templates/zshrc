@@ -2,6 +2,7 @@ platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
    platform='linux'
+   export PROMPT='%~ %# '
 elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='osx'
 fi
@@ -13,7 +14,12 @@ if [ -d $HOME/.oh-my-zsh ]; then
   source $ZSH/oh-my-zsh.sh
 fi
 
-export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
+
+[ -d "/opt/homebrew/bin" ] && export PATH="/opt/homebrew/bin:$PATH"
+
+[ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
+
 export EDITOR='vim'
 export GNUTERM='X11'
 
