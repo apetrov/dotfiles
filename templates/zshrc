@@ -71,3 +71,12 @@ function run_ctags(){
 function mcd() {
   mkdir -p "$1" && cd "$1";
 }
+
+
+presign(){
+    aws s3 presign --profile personal $1
+}
+
+fixhub () {
+    pbpaste | awk 'BEGIN{ FS="/"; OFS="/"}{print $5="user-redirect"; print}' | pbcopy
+}
