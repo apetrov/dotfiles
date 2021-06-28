@@ -308,6 +308,9 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq python-shell-interpreter "/opt/homebrew/bin/python3")
+  (setq org-babel-python-command "python3")
+  (setq org-confirm-babel-evaluate nil)
   )
 
 (defun dotspacemacs/user-config ()
