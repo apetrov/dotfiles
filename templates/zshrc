@@ -79,5 +79,5 @@ presign(){
 }
 
 fixhub () {
-    pbpaste | ruby -ne 'a = $_.split("/");a.delete_at(3);a[3]="user-redirect";a[4]="doc";print a.join("/")' | pbcopy
+    pbpaste | ruby -ne 'a = $_.split("/");a.delete_at(3);a[3]="hub/user-redirect";a[4]="doc";print a.join("/")' | pbcopy
 }
