@@ -10,6 +10,7 @@ fi
 if [ -d $HOME/.oh-my-zsh ]; then
   ZSH=$HOME/.oh-my-zsh
   ZSH_THEME="robbyrussell"
+  # todo: switch to pythonic stack
   plugins=(bundler rake cp gem git vi-mode sudo ruby brew z)
   source $ZSH/oh-my-zsh.sh
 fi
@@ -29,7 +30,6 @@ bindkey -v # VIM binding for zsh
 
 # Convinience tools
 alias -g be='bundle exec'
-alias vimfzf="vim \$(fzf)"
 
 # git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 # restart shell and then:
@@ -59,14 +59,17 @@ if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
   tmux attach-session -t dotfiles || tmux new-session -s dotfiles
 fi;
 
+# hello linux
 start_vpn(){
   sudo openvpn --config  $HOME/.vpn/$1.ovpn --auth-user-pass  $HOME/.vpn/$1.ldap
 }
 
+# use pylsp instead. todo remove
 function run_ctags(){
   ctags -R --languages=ruby --exclude=.git --exclude=log .
 }
 
+<<<<<<< HEAD
 #https://github.com/thoughtbot/dotfiles/blob/master/zsh/functions/mcd
 # Make directory and change into it.
 function mcd() {
@@ -76,4 +79,8 @@ function mcd() {
 
 presign(){
     aws s3 presign --profile personal $1
+=======
+create-dataset(){
+  aws s3 cp $1 "$DATASET_BUCKET/$2/$1"
+>>>>>>> 9c8fe1b (Update zshrc)
 }
