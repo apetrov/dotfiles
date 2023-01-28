@@ -69,18 +69,6 @@ function run_ctags(){
   ctags -R --languages=ruby --exclude=.git --exclude=log .
 }
 
-<<<<<<< HEAD
-#https://github.com/thoughtbot/dotfiles/blob/master/zsh/functions/mcd
-# Make directory and change into it.
-function mcd() {
-  mkdir -p "$1" && cd "$1";
-}
-
-
-presign(){
-    aws s3 presign --profile personal $1
-=======
 create-dataset(){
   aws s3 cp $1 "$DATASET_BUCKET/$2/$1"
->>>>>>> 9c8fe1b (Update zshrc)
 }
