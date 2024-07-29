@@ -15,3 +15,17 @@ git_template:
 
 update:
 	git pull
+
+
+SYSTEMD_UNITS=$(patsubst systemd/%,%, $(wildcard systemd/*))
+SYSTEMD_PATH=/etc/systemd/system
+%.service: systemd/%.service
+	echo $@
+	@if [ -L $(SYSTEMD_PATH)/$@ ]; then sudo rm $(SYSTEMD_PATH)/$@; fi
+	sudo ln -s $(PWD)/$< $(SYSTEMD_PATH)/$@
+	sudo systemctl daemon-reload
+	sudo systemctl enable $@
+	sudo systemctl start $@
+
+systemd/all: $(SYSTEMD_UNITS)
+		echo $(SYSTEMD_UNITS)
