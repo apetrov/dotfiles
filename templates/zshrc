@@ -72,3 +72,14 @@ function run_ctags(){
 create-dataset(){
   aws s3 cp $1 "$DATASET_BUCKET/$2/$1"
 }
+
+function ping-test(){
+  ping -c 5 8.8.8.8
+}
+
+# bun completions
+[ -s "/Users/apetrov/.bun/_bun" ] && source "/Users/apetrov/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
