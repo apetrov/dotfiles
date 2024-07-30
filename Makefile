@@ -29,3 +29,10 @@ SYSTEMD_PATH=/etc/systemd/system
 
 systemd/all: $(SYSTEMD_UNITS)
 		echo $(SYSTEMD_UNITS)
+
+systemd/home: $(SYSTEMD_UNITS)
+
+systemd/office: autossh.service vpn.service 
+
+
+.PHONY: home systemd/all $(SYSTEMD_UNITS)
