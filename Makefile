@@ -28,11 +28,10 @@ SYSTEMD_PATH=/etc/systemd/system
 	sudo systemctl start $@
 
 systemd/all: $(SYSTEMD_UNITS)
-		echo $(SYSTEMD_UNITS)
+	@echo $^
 
-systemd/home: $(SYSTEMD_UNITS)
 
 systemd/office: autossh.service vpn.service 
+	@echo $^
 
-
-.PHONY: home systemd/all $(SYSTEMD_UNITS)
+.PHONY: systemd/all  systemd/office 
