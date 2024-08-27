@@ -83,3 +83,34 @@ function ping-test(){
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+# installation:
+# python3.12 -m venv ~/projects/llm2/.env-arm64
+# source ~/projects/llm2/.env-arm64
+# pip install llm
+# a wrapper around llm
+function llm2() {
+   local VENV_DIR="$HOME/projects/llm2/.env-arm64"
+
+   if [ -d "$VENV_DIR" ]; then
+       source "$VENV_DIR/bin/activate"
+   else
+       echo "Virtual environment '$VENV_DIR' not found."
+       return 1
+   fi
+
+   if ! command -v llm &> /dev/null; then
+       echo "llm could not be found. Please ensure it is installed in the virtual environment."
+       deactivate
+       return 1
+   fi
+
+   if [ -t 0 ]; then
+       llm "$@"
+   else
+       cat - | llm "$@"
+   fi
+
+   deactivate
+}
