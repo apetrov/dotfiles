@@ -3,7 +3,7 @@ TEMPLATES := $(BASE_TEMPLATES:templates/%=%)
 
 .PHONY: all update git_template $(TEMPLATES)
 
-all: update git_template $(TEMPLATES)
+all: update git_template $(TEMPLATES) tmux-plugin-manager
 
 $(TEMPLATES):
 	rm -rf $(HOME)/.$@
@@ -13,25 +13,10 @@ git_template:
 	rm -rf $(HOME)/$@
 	ln -fs $(PWD)/git-template $(HOME)/.$@
 
+tmux-plugin-manager:
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 update:
 	git pull
 
 
-SYSTEMD_UNITS=$(patsubst systemd/%,%, $(wildcard systemd/*))
-SYSTEMD_PATH=/etc/systemd/system
-%.service: systemd/%.service
-	echo $@
-	@if [ -L $(SYSTEMD_PATH)/$@ ]; then sudo rm $(SYSTEMD_PATH)/$@; fi
-	sudo ln -s $(PWD)/$< $(SYSTEMD_PATH)/$@
-	sudo systemctl daemon-reload
-	sudo systemctl enable $@
-	sudo systemctl start $@
-
-systemd/all: $(SYSTEMD_UNITS)
-	@echo $^
-
-
-systemd/office: autossh.service vpn.service 
-	@echo $^
-
-.PHONY: systemd/all  systemd/office 
