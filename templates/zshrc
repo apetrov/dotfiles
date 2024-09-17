@@ -22,8 +22,9 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PAT
 
 [ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
 
-export EDITOR='vim'
+export EDITOR='nvim'
 export GNUTERM='X11'
+export TERM='tmux-256color'
 
 
 bindkey -v # VIM binding for zsh
