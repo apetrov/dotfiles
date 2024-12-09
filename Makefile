@@ -14,7 +14,11 @@ git_template:
 	ln -fs $(PWD)/git-template $(HOME)/.$@
 
 tmux-plugin-manager:
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	@if [ ! -d "$(HOME)/.tmux/plugins/tpm" ]; then \
+		git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm; \
+	else \
+		echo "TPM already installed."; \
+	fi
 
 update:
 	git pull
