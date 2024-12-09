@@ -1,17 +1,21 @@
-BASE_TEMPLATES=$(wildcard templates/*)
-TEMPLATES := $(BASE_TEMPLATES:templates/%=%)
+BASE_FILES=$(wildcard files/*)
+FILES := $(BASE_FILES:files/%=%)
 
-.PHONY: all update git_template $(TEMPLATES)
+.PHONY: all update git_template $(FILES)
 
-all: update git_template $(TEMPLATES) tmux-plugin-manager
+all: inspect update git_template $(FILES) tmux-plugin-manager
 
-$(TEMPLATES):
+inspect:
+	@echo "BASE_FILES: $(BASE_FILES)"
+	@echo "FILES: $(FILES)"
+
+$(FILES):
 	rm -rf $(HOME)/.$@
-	ln $(PWD)/templates/$@ $(HOME)/.$@
+	ln -s $(PWD)/files/$@ $(HOME)/.$@
 
 git_template:
-	rm -rf $(HOME)/$@
-	ln -fs $(PWD)/git-template $(HOME)/.$@
+	rm -rf $(HOME)/.$@
+	ln -fsn $(PWD)/.git-template $(HOME)/.$@
 
 tmux-plugin-manager:
 	@if [ ! -d "$(HOME)/.tmux/plugins/tpm" ]; then \
@@ -22,5 +26,3 @@ tmux-plugin-manager:
 
 update:
 	git pull
-
-
