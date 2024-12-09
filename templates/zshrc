@@ -25,13 +25,15 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PAT
 export EDITOR='nvim'
 export VISUAL='nvim'
 export GNUTERM='X11'
-export TERM='tmux-256color'
+if [ -n "$TMUX" ]; then
+    export TERM="tmux-256color"
+else
+    export TERM="xterm-256color"
+fi
 
 
 bindkey -v # VIM binding for zsh
 
-# Convinience tools
-alias -g be='bundle exec'
 
 # git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 # restart shell and then:
@@ -64,15 +66,6 @@ fi;
 # hello linux
 start_vpn(){
   sudo openvpn --config  $HOME/.vpn/$1.ovpn --auth-user-pass  $HOME/.vpn/$1.ldap
-}
-
-# use pylsp instead. todo remove
-function run_ctags(){
-  ctags -R --languages=ruby --exclude=.git --exclude=log .
-}
-
-create-dataset(){
-  aws s3 cp $1 "$DATASET_BUCKET/$2/$1"
 }
 
 function ping-test(){
