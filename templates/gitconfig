@@ -1,4 +1,3 @@
-
 [user]
 	name = Alexander Petrov
 	email = alexonrails@gmail.com
@@ -7,7 +6,7 @@
   user = apetrov
 
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore_global
 
 [color]
@@ -20,13 +19,8 @@
   co = checkout
   ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
   dc= diff --cached
-  cob = checkout -b
-  up = !git fetch origin && git rebase origin/master
   hist = log --pretty="tformat:\"%h %ad | %s%d [%an]\"" --date=short --decorate
   who = shortlog -n -s --no-merges
-  ctags = !.git/hooks/ctags
-  stat = !git diff --stat $(git merge-base HEAD master)
-  files = !git diff --name-only $(git merge-base HEAD master)
 
 [init]
   templatedir = ~/.git_template
