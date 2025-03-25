@@ -27,3 +27,9 @@ tmux-plugin-manager:
 
 update:
 	git pull
+
+Brewfile: .FORCE
+	@rm -rf $@
+	brew bundle dump
+
+.FORCE:
