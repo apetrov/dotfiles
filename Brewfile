@@ -42,6 +42,7 @@ brew "pango"
 brew "sdl2"
 brew "srt"
 brew "tesseract"
+brew "zeromq"
 brew "ffmpeg"
 brew "fzf"
 brew "gawk"
@@ -143,24 +144,6 @@ cask "telegram"
 cask "tunnelblick"
 cask "visual-studio-code"
 cask "vlc"
-mas "AdBlock Pro", id: 1018301773
-mas "Flycut", id: 442160987
-mas "G2FA", id: 6444865161
-mas "HP Smart", id: 1474276998
-mas "iMovie", id: 408981434
-mas "Keeper Password Manager", id: 414781829
-mas "KeyLimePie", id: 1575163350
-mas "Keynote", id: 409183694
-mas "Kindle Classic", id: 405399194
-mas "Menu Bar Calendar", id: 1558360383
-mas "Microsoft Excel", id: 462058435
-mas "Mirror for Chromecast", id: 1196258230
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Slack", id: 803453959
-mas "Telegram", id: 747648890
-mas "Vimari", id: 1480933944
-mas "Windows App", id: 1295203466
 vscode "alexcvzz.vscode-sqlite"
 vscode "betterthantomorrow.calva"
 vscode "betterthantomorrow.calva-spritz"
