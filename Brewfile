@@ -1,7 +1,5 @@
 tap "databricks/tap"
-tap "hashicorp/tap"
-tap "homebrew/services"
-tap "minio/stable"
+tap "koekeishiya/formulae"
 brew "ack"
 brew "pycparser"
 brew "cffi"
@@ -53,6 +51,7 @@ brew "gdk-pixbuf"
 brew "gh"
 brew "ghostscript"
 brew "git-lfs"
+brew "spirv-tools"
 brew "glslang"
 brew "go"
 brew "pkgconf"
@@ -91,10 +90,12 @@ brew "rust"
 brew "maturin"
 brew "ninja"
 brew "meson"
+brew "minio-mc"
 brew "molten-vk"
 brew "neovim"
 brew "nghttp2"
 brew "nmap"
+brew "node"
 brew "openjdk@11"
 brew "openssl@1.1"
 brew "pkcs11-helper"
@@ -116,7 +117,6 @@ brew "rustup"
 brew "sc-im"
 brew "socat"
 brew "speedtest-cli"
-brew "spirv-tools"
 brew "sshuttle"
 brew "telnet"
 brew "the_silver_searcher"
@@ -132,18 +132,34 @@ brew "youtube-dl"
 brew "z"
 brew "zsh"
 brew "databricks/tap/databricks"
-brew "minio/stable/mc"
+brew "koekeishiya/formulae/yabai"
 cask "docker"
 cask "flycut"
 cask "google-chrome"
 cask "gstreamer-development"
 cask "gstreamer-runtime"
 cask "rar"
-cask "skype"
 cask "telegram"
 cask "tunnelblick"
 cask "visual-studio-code"
 cask "vlc"
+mas "AdBlock Pro", id: 1018301773
+mas "Flycut", id: 442160987
+mas "G2FA", id: 6444865161
+mas "HP Smart", id: 1474276998
+mas "iMovie", id: 408981434
+mas "Keeper Password Manager", id: 414781829
+mas "Keynote", id: 409183694
+mas "Kindle Classic", id: 405399194
+mas "Menu Bar Calendar", id: 1558360383
+mas "Microsoft Excel", id: 462058435
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Slack", id: 803453959
+mas "Telegram", id: 747648890
+mas "Vimari", id: 1480933944
+mas "Windows App", id: 1295203466
+mas "Wokabulary", id: 1667619825
 vscode "alexcvzz.vscode-sqlite"
 vscode "betterthantomorrow.calva"
 vscode "betterthantomorrow.calva-spritz"
