@@ -3,7 +3,7 @@ FILES := $(BASE_FILES:files/%=%)
 
 .PHONY: all update git_template $(FILES)
 
-all: inspect update git_template $(FILES) tmux-plugin-manager
+all: inspect update install
 
 inspect:
 	@echo "BASE_FILES: $(BASE_FILES)"
@@ -12,6 +12,8 @@ inspect:
 $(FILES):
 	rm -rf $(HOME)/.$@
 	ln -s $(PWD)/files/$@ $(HOME)/.$@
+
+install: git_template $(FILES) jupyter_server_config.json tmux-plugin-manager
 
 git_template:
 	rm -rf $(HOME)/.$@
@@ -24,6 +26,11 @@ tmux-plugin-manager:
 	else \
 		echo "TPM already installed."; \
 	fi
+
+jupyter_server_config.json:
+	mkdir -p $(HOME)/.jupyter
+	rm -rf $(HOME)/.jupyter/$@
+	ln -s $(PWD)/jupyter/$@ $(HOME)/.jupyter/$@
 
 update:
 	git pull
