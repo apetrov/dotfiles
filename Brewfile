@@ -4,6 +4,7 @@ brew "ack"
 brew "pycparser"
 brew "cffi"
 brew "libssh"
+brew "tree"
 brew "ansible"
 brew "little-cms2"
 brew "webp"
@@ -96,6 +97,7 @@ brew "neovim"
 brew "nghttp2"
 brew "nmap"
 brew "node"
+brew "ollama", restart_service: :changed
 brew "openjdk@11"
 brew "openssl@1.1"
 brew "pkcs11-helper"
@@ -121,7 +123,6 @@ brew "sshuttle"
 brew "telnet"
 brew "the_silver_searcher"
 brew "tmux"
-brew "tree"
 brew "uv"
 brew "vulkan-headers"
 brew "watch"
@@ -133,7 +134,7 @@ brew "z"
 brew "zsh"
 brew "databricks/tap/databricks"
 brew "koekeishiya/formulae/yabai"
-cask "docker"
+cask "docker-desktop"
 cask "flycut"
 cask "google-chrome"
 cask "gstreamer-development"
@@ -146,7 +147,7 @@ cask "vlc"
 mas "AdBlock Pro", id: 1018301773
 mas "Flycut", id: 442160987
 mas "G2FA", id: 6444865161
-mas "HP Smart", id: 1474276998
+mas "HP", id: 1474276998
 mas "iMovie", id: 408981434
 mas "Keeper Password Manager", id: 414781829
 mas "Keynote", id: 409183694
@@ -155,6 +156,7 @@ mas "Menu Bar Calendar", id: 1558360383
 mas "Microsoft Excel", id: 462058435
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Shorts Blocker", id: 6451330524
 mas "Slack", id: 803453959
 mas "Telegram", id: 747648890
 mas "Vimari", id: 1480933944
