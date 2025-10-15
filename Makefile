@@ -32,11 +32,26 @@ jupyter_server_config.json:
 	rm -rf $(HOME)/.jupyter/$@
 	ln -s $(PWD)/jupyter/$@ $(HOME)/.jupyter/$@
 
-update:
-	git pull
-
 Brewfile: .FORCE
 	@rm -rf $@
 	brew bundle dump
+
+update-os:
+	sudo softwareupdate -ia
+
+update-appstore:
+	mas upgrade
+
+update-brew:
+	brew update
+	brew upgrade
+	brew doctor || true
+	brew cleanup
+
+update-lazy:
+	nvim --headless -c 'Lazy! update' -c 'qa'
+
+update: update-brew Brewfile update-lazy update-os update-appstore 
+	@echo "Done $@"
 
 .FORCE:
