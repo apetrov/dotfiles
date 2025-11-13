@@ -102,6 +102,7 @@ brew "openssl@1.1"
 brew "pkcs11-helper"
 brew "openvpn"
 brew "opusfile"
+brew "postgresql@14", restart_service: :changed
 brew "pv"
 brew "tcl-tk"
 brew "python-tk@3.12"
