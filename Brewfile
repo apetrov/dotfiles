@@ -91,6 +91,7 @@ brew "ninja"
 brew "meson"
 brew "minio-mc"
 brew "molten-vk"
+brew "ncdu"
 brew "neovim"
 brew "nghttp2"
 brew "nmap"
@@ -102,7 +103,7 @@ brew "openssl@1.1"
 brew "pkcs11-helper"
 brew "openvpn"
 brew "opusfile"
-brew "postgresql@14", restart_service: :changed
+brew "postgresql@14"
 brew "pv"
 brew "tcl-tk"
 brew "python-tk@3.12"
@@ -153,11 +154,9 @@ mas "Microsoft Excel", id: 462058435
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Shorts Blocker", id: 6451330524
-mas "Slack", id: 803453959
 mas "Telegram", id: 747648890
 mas "Vimari", id: 1480933944
 mas "Windows App", id: 1295203466
-mas "Wokabulary", id: 1667619825
 vscode "alexcvzz.vscode-sqlite"
 vscode "betterthantomorrow.calva"
 vscode "betterthantomorrow.calva-spritz"
