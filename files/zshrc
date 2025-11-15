@@ -1,3 +1,7 @@
+# prevent brew from bloating the system over time
+export HOMEBREW_INSTALL_CLEANUP=1
+export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=1
+
 platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
@@ -87,4 +91,12 @@ function llm2() {
       echo "Using standard input mode"
        cat - | uvx llm "$@"
    fi
+}
+
+function yt_download() {
+  uvx --with yt-dlp yt-dlp \
+    -f "bestvideo[ext=mp4][vcodec^=avc1][height<=1080]+bestaudio[ext=m4a][acodec^=mp4a]/best[ext=mp4][vcodec^=avc1]" \
+    -o "%(title)s.%(ext)s" \
+    --no-playlist \
+    "$1"
 }
