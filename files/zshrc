@@ -100,3 +100,16 @@ function yt_download() {
     --no-playlist \
     "$1"
 }
+
+function orange3(){
+  uvx --with orange3 \
+         --with PyQt5 \
+         --with pandas \
+         --with requests \
+         --with-editable /Users/apetrov/projects/orange_support \
+         --with orange3 \
+         python -m Orange.canvas
+}
+
+# Added by Antigravity
+export PATH="/Users/apetrov/.antigravity/antigravity/bin:$PATH"
