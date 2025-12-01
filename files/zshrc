@@ -115,6 +115,14 @@ function quake(){
   cd ~/DOS\ Games/Quake && make run
 }
 
+function random_password(){
+  if [ -z "$1" ]; then
+    echo "Usage: random_password <length>"
+    return 1
+  fi
+  openssl rand -base64 $1 | tr -d /=+ | cut -c -$1
+}
+
 
 # Added by Antigravity
 export PATH="/Users/apetrov/.antigravity/antigravity/bin:$PATH"
