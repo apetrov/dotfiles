@@ -11,10 +11,11 @@ brew "webp"
 brew "jpeg-xl"
 brew "aom"
 brew "arp-scan"
+brew "gettext"
+brew "asdf"
 brew "awscli"
 brew "bchunk"
 brew "binutils"
-brew "gettext"
 brew "glib"
 brew "cairo"
 brew "ccrypt"
@@ -103,7 +104,8 @@ brew "openssl@1.1"
 brew "pkcs11-helper"
 brew "openvpn"
 brew "opusfile"
-brew "postgresql@14"
+brew "poppler"
+brew "postgresql@14", restart_service: :changed
 brew "pv"
 brew "tcl-tk"
 brew "python-tk@3.12"
@@ -150,7 +152,6 @@ mas "Keeper Password Manager", id: 414781829
 mas "Keynote", id: 409183694
 mas "Kindle Classic", id: 405399194
 mas "Menu Bar Calendar", id: 1558360383
-mas "Microsoft Excel", id: 462058435
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Shorts Blocker", id: 6451330524
