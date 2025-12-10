@@ -101,6 +101,15 @@ function yt_download() {
     "$1"
 }
 
+function yt_rip_audio() {
+  uvx --with yt-dlp yt-dlp \
+    -f 'bestaudio[ext=webm]/bestaudio' \
+    --remux-video ogg \
+    -o '%(title)s.%(ext)s' \
+    --no-playlist \
+    "$1"
+}
+
 function orange3(){
   uvx --with orange3 \
          --with PyQt5 \
@@ -126,3 +135,4 @@ function random_password(){
 
 # Added by Antigravity
 export PATH="/Users/apetrov/.antigravity/antigravity/bin:$PATH"
+
