@@ -46,12 +46,20 @@ update-brew:
 	brew update
 	brew upgrade
 	brew doctor || true
-	brew cleanup
+	brew cleanup --prune=all
 
 update-lazy:
 	nvim --headless -c 'Lazy! update' -c 'qa'
 
-update: update-brew Brewfile update-lazy update-os update-appstore 
+update: update-brew Brewfile update-lazy update-appstore update-os
 	@echo "Done $@"
+
+cache-purge:
+	pip3.14 cache purge
+	go clean -cache
+	sudo log erase --all
+
+bun-clean:
+		rm -rf $(HOME)/.bun/install/cache
 
 .FORCE:
