@@ -8,8 +8,8 @@ brew "libssh"
 brew "tree"
 brew "ansible"
 brew "little-cms2"
-brew "webp"
 brew "jpeg-xl"
+brew "webp"
 brew "aom"
 brew "arp-scan"
 brew "gettext"
@@ -53,16 +53,16 @@ brew "gnutls"
 brew "go"
 brew "pkgconf"
 brew "gobject-introspection"
+brew "shared-mime-info"
+brew "libheif"
+brew "libtool"
 brew "netpbm"
 brew "gts"
 brew "librsvg"
-brew "libtool"
 brew "graphviz"
 brew "guile"
 brew "htop"
 brew "httpie"
-brew "shared-mime-info"
-brew "libheif"
 brew "imagemagick"
 brew "iperf3"
 brew "jq"
@@ -125,6 +125,7 @@ brew "srt"
 brew "sshuttle"
 brew "telnet"
 brew "the_silver_searcher"
+brew "timg"
 brew "tmux"
 brew "uv"
 brew "vulkan-headers"
@@ -149,7 +150,6 @@ cask "vlc"
 cask "zoom"
 mas "Flycut", id: 442160987
 mas "G2FA", id: 6444865161
-mas "HP", id: 1474276998
 mas "iMovie", id: 408981434
 mas "Keeper Password Manager", id: 414781829
 mas "Keynote", id: 409183694
@@ -161,6 +161,7 @@ mas "Shorts Blocker", id: 6451330524
 mas "Telegram", id: 747648890
 mas "Vimari", id: 1480933944
 mas "Windows App", id: 1295203466
+mas "Xcode", id: 497799835
 vscode "alexcvzz.vscode-sqlite"
 vscode "betterthantomorrow.calva"
 vscode "betterthantomorrow.calva-spritz"
@@ -188,3 +189,4 @@ vscode "mtxr.sqltools-driver-sqlite"
 vscode "pdconsec.vscode-print"
 vscode "ultram4rine.sqltools-clickhouse-driver"
 vscode "vscodevim.vim"
+go "github.com/DarthSim/overmind"
