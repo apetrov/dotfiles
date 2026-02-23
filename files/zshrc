@@ -120,6 +120,11 @@ function orange3(){
          python -m Orange.canvas
 }
 
+
+function pbtranslate(){
+  { echo "Translate to fluent, idiomatic English. Preserve technical terms. Output only the translation:"; pbpaste; } | llm2
+}
+
 function quake(){
   cd ~/DOS\ Games/Quake && make run
 }
