@@ -24,6 +24,7 @@
 
 [init]
   templatedir = ~/.git_template
+	defaultBranch = master
 
 [push]
   default = current
