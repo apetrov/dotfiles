@@ -43,15 +43,19 @@ update-appstore:
 	mas upgrade
 
 update-brew:
-	brew update
-	brew upgrade
-	brew doctor || true
-	brew cleanup --prune=all
+	: > change.log
+	brew update 2>&1 | tee -a change.log
+	brew upgrade 2>&1 | tee -a change.log
+	brew doctor 2>&1 | tee -a change.log || true
+	brew cleanup --prune=all 2>&1 | tee -a change.log
 
 update-lazy:
-	nvim --headless -c 'Lazy! update' -c 'qa'
+	nvim --headless -c 'Lazy! update' -c 'qa' 2>&1 | tee -a change.log
 
-update: update-brew Brewfile update-lazy update-appstore update-os
+summarize-changes:
+	@cat change.log | uvx llm "Summarize change.log. Focus on what changed, notable upgrades, warnings, failures, and suggested follow-ups. Keep it concise."
+
+update: update-brew Brewfile update-lazy summarize-changes update-appstore update-os
 	@echo "Done $@"
 
 cache-purge:
