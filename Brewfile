@@ -105,7 +105,7 @@ brew "pkcs11-helper"
 brew "openvpn"
 brew "opusfile"
 brew "poppler"
-brew "postgresql@14", restart_service: :changed
+brew "postgresql@16", link: true
 brew "pv"
 brew "tcl-tk"
 brew "python-tk@3.12"
