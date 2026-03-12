@@ -137,6 +137,9 @@ function random_password(){
   openssl rand -base64 $1 | tr -d /=+ | cut -c -$1
 }
 
+function nvim-pr(){
+  git diff --name-only --diff-filter=ACMR "$(git merge-base HEAD origin/master)"...HEAD -z | xargs -0 nvim
+}
 
 # Added by Antigravity
 export PATH="/Users/apetrov/.antigravity/antigravity/bin:$PATH"
