@@ -9,7 +9,6 @@ brew "tree"
 brew "ansible"
 brew "little-cms2"
 brew "jpeg-xl"
-brew "webp"
 brew "aom"
 brew "arp-scan"
 brew "asdf"
@@ -32,6 +31,7 @@ brew "crystal"
 brew "docutils"
 brew "duckdb"
 brew "enscript"
+brew "exiftool"
 brew "opus"
 brew "sdl2"
 brew "ffmpeg"
@@ -40,14 +40,17 @@ brew "fzf"
 brew "gawk"
 brew "gcc"
 brew "libavif"
+brew "webp"
 brew "gd"
 brew "gdk-pixbuf"
+brew "libomp", link: true
 brew "gh"
 brew "leptonica"
 brew "pango"
 brew "tesseract"
 brew "ghostscript"
 brew "git-lfs"
+brew "glow"
 brew "spirv-tools"
 brew "glslang"
 brew "p11-kit"
@@ -76,7 +79,6 @@ brew "lazydocker"
 brew "lazygit"
 brew "libbluray"
 brew "libmagic"
-brew "libomp", link: true
 brew "libraw"
 brew "libvorbis"
 brew "llama.cpp"
@@ -144,20 +146,19 @@ cask "vcmi/vcmi/vcmi"
 cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
+mas "AdBlock Pro 2", id: 1018301773
 mas "Flycut", id: 442160987
 mas "G2FA", id: 6444865161
 mas "iMovie", id: 408981434
 mas "Keeper Password Manager", id: 414781829
 mas "Keynote", id: 409183694
 mas "Kindle Classic", id: 405399194
-mas "Menu Bar Calendar", id: 1558360383
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Shorts Blocker", id: 6451330524
 mas "Telegram", id: 747648890
 mas "Vimari", id: 1480933944
 mas "Windows App", id: 1295203466
-mas "Xcode", id: 497799835
 vscode "alexcvzz.vscode-sqlite"
 vscode "betterthantomorrow.calva"
 vscode "betterthantomorrow.calva-spritz"
