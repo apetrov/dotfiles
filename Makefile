@@ -55,7 +55,7 @@ update-lazy:
 summarize-changes:
 	@cat change.log | uvx llm "Summarize change.log. Focus on what changed, notable upgrades, warnings, failures, and suggested follow-ups. Keep it concise."
 
-update: update-brew Brewfile update-lazy summarize-changes update-appstore update-os
+update: update-brew Brewfile update-lazy summarize-changes update-appstore
 	@echo "Done $@"
 
 cache-purge:
