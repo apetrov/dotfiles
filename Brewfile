@@ -105,7 +105,7 @@ brew "pkcs11-helper"
 brew "openvpn"
 brew "opusfile"
 brew "poppler"
-brew "postgresql@16", link: true
+brew "postgresql@16", restart_service: :changed, link: true
 brew "pv"
 brew "tcl-tk"
 brew "python-tk@3.12"
@@ -150,14 +150,13 @@ mas "AdBlock Pro 2", id: 1018301773
 mas "Flycut", id: 442160987
 mas "G2FA", id: 6444865161
 mas "iMovie", id: 408981434
-mas "Keeper Password Manager", id: 414781829
 mas "Keynote", id: 409183694
 mas "Kindle Classic", id: 405399194
+mas "Menu Bar Calendar", id: 1558360383
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Shorts Blocker", id: 6451330524
 mas "Telegram", id: 747648890
-mas "Vimari", id: 1480933944
 mas "Windows App", id: 1295203466
 vscode "alexcvzz.vscode-sqlite"
 vscode "betterthantomorrow.calva"
