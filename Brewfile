@@ -1,5 +1,6 @@
 tap "databricks/tap"
 tap "koekeishiya/formulae"
+tap "nikitabobko/tap"
 tap "vcmi/vcmi"
 brew "ack"
 brew "pycparser"
@@ -129,6 +130,7 @@ brew "the_silver_searcher"
 brew "timg"
 brew "tmux"
 brew "uv"
+brew "visidata"
 brew "vulkan-headers"
 brew "watch"
 brew "wget"
@@ -138,9 +140,11 @@ brew "z"
 brew "zeromq"
 brew "zsh"
 brew "databricks/tap/databricks"
+cask "nikitabobko/tap/aerospace"
 cask "docker-desktop"
 cask "flycut"
 cask "google-chrome"
+cask "ioquake3"
 cask "telegram"
 cask "vcmi/vcmi/vcmi"
 cask "visual-studio-code"
@@ -150,6 +154,7 @@ mas "AdBlock Pro 2", id: 1018301773
 mas "Flycut", id: 442160987
 mas "G2FA", id: 6444865161
 mas "iMovie", id: 408981434
+mas "Keeper Password Manager", id: 414781829
 mas "Keynote", id: 409183694
 mas "Kindle Classic", id: 405399194
 mas "Menu Bar Calendar", id: 1558360383

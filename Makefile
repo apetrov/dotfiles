@@ -1,7 +1,7 @@
 BASE_FILES=$(wildcard files/*)
 FILES := $(BASE_FILES:files/%=%)
 
-.PHONY: all update git_template $(FILES)
+.PHONY: all update git_template quake3-autoexec $(FILES)
 
 all: inspect update install
 
@@ -13,7 +13,7 @@ $(FILES):
 	rm -rf $(HOME)/.$@
 	ln -s $(PWD)/files/$@ $(HOME)/.$@
 
-install: git_template $(FILES) jupyter_server_config.json tmux-plugin-manager
+install: git_template $(FILES) jupyter_server_config.json tmux-plugin-manager quake3-autoexec
 
 git_template:
 	rm -rf $(HOME)/.$@
@@ -31,6 +31,11 @@ jupyter_server_config.json:
 	mkdir -p $(HOME)/.jupyter
 	rm -rf $(HOME)/.jupyter/$@
 	ln -s $(PWD)/jupyter/$@ $(HOME)/.jupyter/$@
+
+quake3-autoexec:
+	mkdir -p "$(HOME)/Library/Application Support/Quake3"
+	rm -rf "$(HOME)/Library/Application Support/Quake3/autoexec.cfg"
+	ln -s "$(PWD)/files/quake/autoexec.cfg" "$(HOME)/Library/Application Support/Quake3/autoexec.cfg"
 
 Brewfile: .FORCE
 	@rm -rf $@
