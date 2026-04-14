@@ -1,7 +1,7 @@
-BASE_FILES=$(wildcard files/*)
+BASE_FILES=$(filter-out files/quake files/quake3,$(wildcard files/*))
 FILES := $(BASE_FILES:files/%=%)
 
-.PHONY: all update git_template quake3-autoexec $(FILES)
+.PHONY: all update git_template quake3-autoexec vkquake-config $(FILES)
 
 all: inspect update install
 
@@ -13,7 +13,7 @@ $(FILES):
 	rm -rf $(HOME)/.$@
 	ln -s $(PWD)/files/$@ $(HOME)/.$@
 
-install: git_template $(FILES) jupyter_server_config.json tmux-plugin-manager quake3-autoexec
+install: git_template $(FILES) jupyter_server_config.json tmux-plugin-manager quake3-autoexec vkquake-config
 
 git_template:
 	rm -rf $(HOME)/.$@
@@ -36,6 +36,12 @@ quake3-autoexec:
 	mkdir -p "$(HOME)/Library/Application Support/Quake3"
 	rm -rf "$(HOME)/Library/Application Support/Quake3/autoexec.cfg"
 	ln -s "$(PWD)/files/quake3/autoexec.cfg" "$(HOME)/Library/Application Support/Quake3/autoexec.cfg"
+
+vkquake-config:
+	@[ -n "$(QUAKE_DIR)" ] || (echo "QUAKE_DIR is not set"; exit 1)
+	mkdir -p "$(QUAKE_DIR)/id1"
+	rm -rf "$(QUAKE_DIR)/id1/vkQuake.cfg"
+	ln -s "$(PWD)/files/quake/vkQuake.cfg" "$(QUAKE_DIR)/id1/vkQuake.cfg"
 
 Brewfile: .FORCE
 	@rm -rf $@
