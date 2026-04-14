@@ -35,7 +35,7 @@ jupyter_server_config.json:
 quake3-autoexec:
 	mkdir -p "$(HOME)/Library/Application Support/Quake3"
 	rm -rf "$(HOME)/Library/Application Support/Quake3/autoexec.cfg"
-	ln -s "$(PWD)/files/quake/autoexec.cfg" "$(HOME)/Library/Application Support/Quake3/autoexec.cfg"
+	ln -s "$(PWD)/files/quake3/autoexec.cfg" "$(HOME)/Library/Application Support/Quake3/autoexec.cfg"
 
 Brewfile: .FORCE
 	@rm -rf $@
