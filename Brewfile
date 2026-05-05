@@ -100,7 +100,6 @@ brew "neovim"
 brew "nghttp2"
 brew "nmap"
 brew "node"
-brew "openjdk@11"
 brew "openjdk@17"
 brew "pkcs11-helper"
 brew "openvpn"
@@ -162,6 +161,7 @@ mas "Kindle Classic", id: 405399194
 mas "Menu Bar Calendar", id: 1558360383
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Pharo Smalltalk", id: 6759073615
 mas "Shorts Blocker", id: 6451330524
 mas "Telegram", id: 747648890
 mas "Windows App", id: 1295203466
