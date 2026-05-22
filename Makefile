@@ -1,9 +1,19 @@
-BASE_FILES=$(filter-out files/quake files/quake3,$(wildcard files/*))
+BASE_FILES=$(filter-out files/quake files/quake3 files/nsmb.conf,$(wildcard files/*))
 FILES := $(BASE_FILES:files/%=%)
 
 .PHONY: all update git_template quake3-autoexec vkquake-config $(FILES)
 
 all: inspect update install
+
+
+install-nsmb:
+		sudo rm -rf /etc/nsmb.conf
+		sudo cp $(PWD)/files/nsmb.conf /etc/nsmb.conf
+		sudo chown root:wheel /etc/nsmb.conf
+		sudo chmod 644 /etc/nsmb.conf
+
+print-files:
+	@echo $(FILES)
 
 inspect:
 	@echo "BASE_FILES: $(BASE_FILES)"
@@ -73,8 +83,5 @@ cache-purge:
 	pip3.14 cache purge
 	go clean -cache
 	sudo log erase --all
-
-bun-clean:
-		rm -rf $(HOME)/.bun/install/cache
 
 .FORCE:
