@@ -7,8 +7,11 @@ export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=1
 
 # Homebrew zsh upgrades change the versioned Cellar functions path. Keep fpath
 # on stable symlinked directories so autoloaded helpers like compinit survive.
-fpath=("${(@)fpath:#/opt/homebrew/Cellar/zsh/*/share/zsh/functions}")
-[ -d "/opt/homebrew/share/zsh/functions" ] && fpath=("/opt/homebrew/share/zsh/functions" $fpath)
+for zsh_functions_dir in /opt/homebrew/share/zsh/functions /usr/local/share/zsh/functions; do
+  fpath=("${(@)fpath:#${zsh_functions_dir:h:h:h}/Cellar/zsh/*/share/zsh/functions}")
+  [ -d "$zsh_functions_dir" ] && fpath=("$zsh_functions_dir" $fpath)
+done
+unset zsh_functions_dir
 typeset -U fpath
 
 platform='unknown'
@@ -26,6 +29,9 @@ if [ -d $HOME/.oh-my-zsh ]; then
   # todo: switch to pythonic stack
   plugins=(bundler rake cp gem git vi-mode sudo ruby brew z)
   source $ZSH/oh-my-zsh.sh
+  autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+  zle -N up-line-or-beginning-search
+  zle -N down-line-or-beginning-search
 fi
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
