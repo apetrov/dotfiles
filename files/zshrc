@@ -34,7 +34,18 @@ if [ -d $HOME/.oh-my-zsh ]; then
   zle -N down-line-or-beginning-search
 fi
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH
+path=(
+  /opt/homebrew/bin
+  /opt/homebrew/sbin
+  /usr/bin
+  /bin
+  /usr/sbin
+  /sbin
+  /usr/local/git/bin
+  /usr/local/bin
+  $path
+)
+typeset -U path
 
 [ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
 
