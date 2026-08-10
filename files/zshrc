@@ -35,6 +35,7 @@ if [ -d $HOME/.oh-my-zsh ]; then
 fi
 
 path=(
+  "$HOME/.cargo/bin"
   /opt/homebrew/bin
   /opt/homebrew/sbin
   /usr/bin
