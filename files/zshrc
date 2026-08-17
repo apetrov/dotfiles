@@ -117,7 +117,8 @@ function yt_download() {
 }
 
 function yt_rip_audio() {
-  uvx --with yt-dlp yt-dlp \
+  uvx --with 'yt-dlp[default]' yt-dlp \
+    --js-runtimes node:/opt/homebrew/bin/node \
     -f 'bestaudio[ext=webm]/bestaudio' \
     --remux-video ogg \
     -o '%(title)s.%(ext)s' \
