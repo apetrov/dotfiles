@@ -1,3 +1,5 @@
+tap "basecamp/tap"
+tap "borkdude/brew"
 tap "databricks/tap"
 tap "nikitabobko/tap"
 tap "vcmi/vcmi"
@@ -43,6 +45,8 @@ brew "libtiff"
 brew "little-cms2"
 # Development kit for the Java programming language
 brew "openjdk"
+# Dynamic, general-purpose programming language
+brew "clojure"
 # Clojure to JS compiler
 brew "clojurescript"
 # Cross-platform make
@@ -168,7 +172,7 @@ brew "libvorbis"
 # LLM inference in C/C++
 brew "llama.cpp"
 # Powerful, clean, object-oriented scripting language
-brew "ruby", link: false
+brew "ruby"
 # GUI for vim, made for macOS
 brew "macvim"
 # MPEG audio decoder
@@ -211,6 +215,10 @@ brew "pandoc"
 brew "poppler"
 # Object-relational database system
 brew "postgresql@16", restart_service: :changed, link: true
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
+# Protoc plugin for gRPC Java
+brew "protoc-gen-grpc-java"
 # Monitor data's progress through a pipe
 brew "pv"
 # Tool Command Language
@@ -277,16 +285,24 @@ brew "z"
 brew "zeromq"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Native, fast starting Clojure interpreter for scripting.
+brew "borkdude/brew/babashka", trusted: true
 # Command-line interface for the Databricks platform
 brew "databricks/tap/databricks", trusted: true
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace", trusted: true
+# E-books management software
+cask "calibre"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Clipboard manager for developers
 cask "flycut"
 # Web browser
 cask "google-chrome"
+# Command-line interface for HEY email
+cask "basecamp/tap/hey", trusted: true
 # First person shooter engine
 cask "ioquake3"
 # Discover, download, and run local LLMs
@@ -301,12 +317,14 @@ cask "vcmi/vcmi/vcmi", trusted: true
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+# Menu bar app for USB-C cable diagnostics
+cask "whatcable"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "AdBlock Pro", id: 1018301773
+mas "Developer", id: 640199958
 mas "Flycut", id: 442160987
 mas "G2FA", id: 6444865161
-mas "iMovie", id: 408981434
 mas "Keeper Password Manager", id: 414781829
 mas "Keynote", id: 409183694
 mas "Kindle Classic", id: 405399194
@@ -317,36 +335,8 @@ mas "Pharo Smalltalk", id: 6759073615
 mas "Shorts Blocker", id: 6451330524
 mas "Telegram", id: 747648890
 mas "Windows App", id: 1295203466
-vscode "alexcvzz.vscode-sqlite"
-vscode "betterthantomorrow.calva"
-vscode "betterthantomorrow.calva-spritz"
-vscode "brunoventura.sqltools-athena-driver"
-vscode "gerane.theme-idlefingers"
-vscode "github.copilot"
-vscode "github.copilot-chat"
-vscode "github.vscode-pull-request-github"
-vscode "ms-python.debugpy"
-vscode "ms-python.isort"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-python.vscode-python-envs"
-vscode "ms-toolsai.jupyter"
-vscode "ms-toolsai.jupyter-renderers"
-vscode "ms-toolsai.vscode-jupyter-cell-tags"
-vscode "ms-toolsai.vscode-jupyter-slideshow"
-vscode "ms-vscode-remote.remote-ssh"
-vscode "ms-vscode-remote.remote-ssh-edit"
-vscode "ms-vscode.makefile-tools"
-vscode "ms-vscode.remote-explorer"
-vscode "mtxr.sqltools"
-vscode "mtxr.sqltools-driver-pg"
-vscode "mtxr.sqltools-driver-sqlite"
-vscode "pdconsec.vscode-print"
-vscode "ultram4rine.sqltools-clickhouse-driver"
-vscode "vscodevim.vim"
+mas "Xcode", id: 497799835
 go "github.com/DarthSim/overmind"
 uv "ucode", source: "git+https://github.com/databricks/ucode"
-npm "@mermaid-js/mermaid-cli"
 npm "@openai/codex"
-npm "@vibe-kit/grok-cli"
-npm "openclaw"
+npm "corepack"
