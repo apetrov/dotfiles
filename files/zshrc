@@ -144,6 +144,50 @@ function random_password(){
   openssl rand -base64 $1 | tr -d /=+ | cut -c -$1
 }
 
+function new-session() {
+  if (( $# != 1 )) || [[ ! -d "$1" ]]; then
+    print -u2 'Usage: new-session <directory>'
+    return 1
+  fi
+
+  local directory=${1:A}
+  local session_name=${directory:t}
+  session_name=${session_name//[.:]/_}
+  [[ -n "$session_name" ]] || session_name=root
+
+  local session
+  session=$(tmux new-session -d -s "$session_name" -n nvim \
+    -c "$directory" -P -F '#{session_id}') || return
+
+  tmux set-option -t "$session" base-index 0
+  tmux move-window -r -t "$session"
+  tmux set-option -t "$session" allow-rename off
+  tmux set-window-option -t "$session:0" automatic-rename off
+
+  local window
+  for window in 1:codex 2:procfile 3:lazygit 4:shell; do
+    tmux new-window -d -t "$session:${window%%:*}" \
+      -n "${window#*:}" -c "$directory"
+    tmux set-window-option -t "$session:${window%%:*}" automatic-rename off
+  done
+
+  tmux send-keys -t "$session:0" -l 'nvim'
+  tmux send-keys -t "$session:0" Enter
+  tmux send-keys -t "$session:1" -l 'codex'
+  tmux send-keys -t "$session:1" Enter
+  tmux send-keys -t "$session:2" -l 'honcho start'
+  tmux send-keys -t "$session:2" Enter
+  tmux send-keys -t "$session:3" -l 'lazygit'
+  tmux send-keys -t "$session:3" Enter
+  tmux select-window -t "$session:0"
+
+  if [[ -n "$TMUX" ]]; then
+    tmux switch-client -t "$session"
+  else
+    tmux attach-session -t "$session"
+  fi
+}
+
 function nvim-pr(){
   git diff --name-only --diff-filter=ACMR "$(git merge-base HEAD origin/master)"...HEAD -z | xargs -0 nvim
 }
