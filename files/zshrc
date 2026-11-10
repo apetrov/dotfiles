@@ -188,6 +188,15 @@ function new-session() {
   fi
 }
 
+function kill-session() {
+  if (( $# != 1 )) || [[ -z "${1#:}" ]]; then
+    print -u2 'Usage: kill-session <name>'
+    return 1
+  fi
+
+  tmux kill-session -t "=${1#:}"
+}
+
 function nvim-pr(){
   git diff --name-only --diff-filter=ACMR "$(git merge-base HEAD origin/master)"...HEAD -z | xargs -0 nvim
 }
