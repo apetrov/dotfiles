@@ -195,3 +195,6 @@ function nvim-pr(){
 # # Added by LM Studio CLI (lms)
 # export PATH="$PATH:/Users/apetrov/.cache/lm-studio/bin"
 # # End of LM Studio CLI section
+
+# Use asdf-managed runtime versions.
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
