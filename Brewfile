@@ -1,10 +1,8 @@
 tap "basecamp/tap"
 tap "borkdude/brew"
 tap "databricks/tap"
-tap "nikitabobko/tap"
+tap "nikitabobko/tap", trusted: { casks: ["aerospace"] }
 tap "vcmi/vcmi"
-# Search tool like grep, but optimized for programmers
-brew "ack"
 # C parser in Python
 brew "pycparser"
 # C Foreign Function Interface for Python
@@ -37,18 +35,6 @@ brew "cairo"
 brew "ccrypt"
 # Browse, inspect, and launch movie torrents directly from your terminal
 brew "cinecli"
-# OpenType text shaping engine
-brew "harfbuzz"
-# TIFF library and utilities
-brew "libtiff"
-# Color management engine supporting ICC profiles
-brew "little-cms2"
-# Development kit for the Java programming language
-brew "openjdk"
-# Dynamic, general-purpose programming language
-brew "clojure"
-# Clojure to JS compiler
-brew "clojurescript"
 # Cross-platform make
 brew "cmake"
 # GNU File, Shell, and Text utilities
@@ -85,6 +71,10 @@ brew "fzf"
 brew "gawk"
 # GNU compiler collection
 brew "gcc"
+# TIFF library and utilities
+brew "libtiff"
+# Color management engine supporting ICC profiles
+brew "little-cms2"
 # New file format for still image compression
 brew "jpeg-xl"
 # Library for encoding and decoding .avif files
@@ -93,10 +83,10 @@ brew "libavif"
 brew "gd"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
-# LLVM's OpenMP runtime library
-brew "libomp", link: true
 # GitHub command-line tool
 brew "gh"
+# OpenType text shaping engine
+brew "harfbuzz"
 # Image processing and image analysis library
 brew "leptonica"
 # Framework for layout and rendering of i18n text
@@ -165,12 +155,12 @@ brew "lazygit"
 brew "libbluray"
 # Implementation of the file(1) command
 brew "libmagic"
+# LLVM's OpenMP runtime library
+brew "libomp", link: true
 # Library for reading RAW files from digital photo cameras
 brew "libraw"
 # Vorbis general audio compression codec
 brew "libvorbis"
-# LLM inference in C/C++
-brew "llama.cpp"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # GUI for vim, made for macOS
@@ -202,6 +192,8 @@ brew "nmap"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Development kit for the Java programming language
+brew "openjdk"
+# Development kit for the Java programming language
 brew "openjdk@17"
 # Library to simplify the interaction with PKCS#11
 brew "pkcs11-helper"
@@ -231,22 +223,18 @@ brew "python@3.10"
 brew "python@3.11"
 # Generic machine emulator and virtualizer
 brew "qemu"
-# Install various Ruby versions and implementations
-brew "ruby-build"
-# Ruby version manager
-brew "rbenv"
 # Persistent key-value database, with built-in net interface
 brew "redis", restart_service: :changed
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Install various Ruby versions and implementations
+brew "ruby-build"
 # Safe, concurrent, practical language
 brew "rust"
 # Rust toolchain installer
 brew "rustup"
-# Spreadsheet program for the terminal, using ncurses
-brew "sc-im"
 # Database of common MIME types
 brew "shared-mime-info"
 # SOcket CAT: netcat on steroids
@@ -259,16 +247,12 @@ brew "srt"
 brew "sshuttle"
 # User interface to the TELNET protocol
 brew "telnet"
-# Code-search similar to ack
-brew "the_silver_searcher"
 # Terminal image and video viewer
 brew "timg"
 # Terminal multiplexer
 brew "tmux"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
-# Terminal spreadsheet multitool for discovering and arranging data
-brew "visidata"
 # Vulkan Header files and API registry
 brew "vulkan-headers"
 # Executes a program periodically, showing output fullscreen
@@ -285,12 +269,8 @@ brew "z"
 brew "zeromq"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Native, fast starting Clojure interpreter for scripting.
-brew "borkdude/brew/babashka", trusted: true
 # Command-line interface for the Databricks platform
 brew "databricks/tap/databricks", trusted: true
-# AeroSpace is an i3-like tiling window manager for macOS
-cask "nikitabobko/tap/aerospace", trusted: true
 # E-books management software
 cask "calibre"
 # Terminal-based AI coding assistant
@@ -313,15 +293,12 @@ cask "squeak"
 cask "telegram"
 # Open-source engine for Heroes of Might & Magic III
 cask "vcmi/vcmi/vcmi", trusted: true
-# Open-source code editor
-cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
 # Menu bar app for USB-C cable diagnostics
 cask "whatcable"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "AdBlock Pro", id: 1018301773
 mas "Developer", id: 640199958
 mas "Flycut", id: 442160987
 mas "G2FA", id: 6444865161
