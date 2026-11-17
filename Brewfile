@@ -183,6 +183,8 @@ brew "minio-mc"
 brew "molten-vk"
 # NCurses Disk Usage
 brew "ncdu"
+# Incremental parsing library
+brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # HTTP/2 C Library
@@ -251,6 +253,8 @@ brew "telnet"
 brew "timg"
 # Terminal multiplexer
 brew "tmux"
+# Parser generator tool
+brew "tree-sitter-cli"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Vulkan Header files and API registry
