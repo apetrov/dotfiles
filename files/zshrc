@@ -205,6 +205,40 @@ function codex-unsafe(){
   codex --sandbox danger-full-access --ask-for-approval never
 }
 
+# Usage: codex-review [output-file] [review-options]
+function codex-review(){
+  local output_file=/tmp/review.md
+  if (( $# )) && [[ "$1" != -* ]]; then
+    output_file="$1"
+    shift
+  fi
+  if (( $# == 0 )); then
+    set -- --uncommitted
+  fi
+  local review_dir
+  review_dir=$(mktemp -d "${TMPDIR:-/tmp}/codex-review.XXXXXXXX") || return
+
+  {
+    codex exec review --output-last-message "$review_dir/review.md" "$@" \
+      >"$review_dir/codex.log" 2>&1
+    local review_status=$?
+    if (( review_status != 0 )); then
+      cat "$review_dir/codex.log" >&2
+      return "$review_status"
+    fi
+    if [[ ! -s "$review_dir/review.md" ]]; then
+      cat "$review_dir/codex.log" >&2
+      print -u2 'Codex did not produce a review report.'
+      return 1
+    fi
+    cat "$review_dir/review.md" > "$output_file" || return
+    print -r -- "$output_file"
+  } always {
+    command rm -f -- "$review_dir/review.md" "$review_dir/codex.log"
+    command rmdir -- "$review_dir"
+  }
+}
+
 # # Added by LM Studio CLI (lms)
 # export PATH="$PATH:/Users/apetrov/.cache/lm-studio/bin"
 # # End of LM Studio CLI section
